@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Pool</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: #333;
+        }
+
+        h3 {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #444;
+        }
+        h4 {
+            text-align: center;
+            font-size: 1rem;
+            margin-bottom: 2px;
+            margin-top: 0px;
+            color: #444;
+
+        }
+        .tables-container {
+            display: flex;
+            justify-content: space-around;
+            gap: 2px;
+            flex-wrap: wrap;
+        }
+
+        .table-wrapper {
+            flex: 1;
+            background-color: #fff;
+            padding: 5px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 1em;
+            text-align: left;
+        }
+
+        th,
+        td {
+            padding: 5px 5px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background-color: #930000;
+            color: #fff;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 8px;
+            border-bottom: 2px solid #930000;
+            height: 10px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        tr:hover {
+            background-color: #e6f7ff;
+        }
+
+        td {
+            font-size: 0.875em;
+            color: #333;
+        }
+
+        .hero {
+            cursor: pointer;
+            font-weight: bold;
+            color: #930000;
+            transition: color 0.3s ease;
+        }
+
+        .hero:hover {
+            color: #0056b3;
+        }
+
+        .hero-selected {
+            background-color: #bdffbd;
+            border-radius: 4px;
+        }
+
+        .filter-buttons {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .filter-buttons button {
+            margin: 1px;
+            padding: 2px 40px;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            background-color: #666666;
+            color: #fff;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .filter-buttons button:hover {
+            background-color: #e66000;
+        }
+
+        .filter-buttons button.active {
+            background-color: #930000;
+        }
+
+        @media (max-width: 768px) {
+            .table-wrapper {
+                max-width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .tables-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="filter-buttons">
+        <button data-type="all" class="active">All Types</button>
+        <button data-type="Assasin">Assasin</button>
+        <button data-type="Fighter">Fighter</button>
+        <button data-type="Mage">Mage</button>
+        <button data-type="Support">Support</button>
+        <button data-type="Tank">Tank</button>
+        <button data-type="Carry">Carry</button>
+    </div>
+    <!-- <div><h4>TEAM NAME</h4></div> -->
+    <div class="tables-container">
+        <div class="table-wrapper">
+            <table id="table-1">
+                <!-- Table data will be injected here -->
+            </table>
+        </div>
+        <div class="table-wrapper">
+            <table id="table-2">
+                <!-- Table data will be injected here -->
+            </table>
+        </div>
+        <div class="table-wrapper">
+            <table id="table-3">
+                <!-- Table data will be injected here -->
+            </table>
+        </div>
+    </div>
+
+    <!-- Load PapaParse Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let selectedHeroes = [];
+            let heroTypeFilter = "all"; // Default to show all types
+            let cachedHeroData = null; // Variable to store cached heropool.csv data
+
+            // Hero types data
+            const heroTypes = {
+                "Airi": "Fighter",
+                "Aleister": "Mage",
+                "Alice": "Support",
+                "Allain": "Fighter",
+                "Amily": "Fighter",
+                "Annette": "Support",
+                "Aoi": "Assasin",
+                "Arduin": "Tank",
+                "Arum": "Support",
+                "Astrid": "Fighter",
+                "Ata": "Support",
+                "Aya": "Support",
+                "Azzen'Ka": "Mage",
+                "Baldum": "Tank",
+                "Bijan": "Fighter",
+                "Bonnie": "Mage",
+                "Bright": "Assasin",
+                "Butterfly": "Assasin",
+                "Capheny": "Carry",
+                "Celica": "Carry",
+                "Charlotte": "Fighter",
+                "Chaugnar": "Tank",
+                "Cresht": "Support",
+                "D'Arcy": "Mage",
+                "Dextra": "Fighter",
+                "Diao chan": "Mage",
+                "Dirak": "Mage",
+                "Dolia": "Support",
+                "Eland'orr": "Carry",
+                "Elsu": "Carry",
+                "Enzo": "Assasin",
+                "Erin": "Carry",
+                "Errol": "Fighter",
+                "Fennik": "Carry",
+                "Florentino": "Fighter",
+                "Gildur": "Tank",
+                "Grakk": "Support",
+                "Hayate": "Carry",
+                "Helen": "Support",
+                "Iggy": "Mage",
+                "Ignis": "Mage",
+                "Ilumia": "Mage",
+                "Ishar": "Mage",
+                "Jinna": "Mage",
+                "Kahlii": "Mage",
+                "Kaine": "Assasin",
+                "Keera": "Assasin",
+                "Kil'Groth": "Fighter",
+                "Kriknak": "Assasin",
+                "Krixi": "Mage",
+                "Krizzix": "Support",
+                "Lauriel": "Mage",
+                "Laville": "Carry",
+                "Liliana": "Mage",
+                "Lindis": "Carry",
+                "Lorion": "Mage",
+                "Lu Bu": "Fighter",
+                "Lumburr": "Support",
+                "Maloch": "Fighter",
+                "Marja": "Mage",
+                "Max": "Tank",
+                "Mganga": "Mage",
+                "Mina": "Tank",
+                "Ming": "Support",
+                "Moren": "Carry",
+                "Mortos": "Fighter",
+                "Murad": "Assasin",
+                "Nakroth": "Assasin",
+                "Natalya": "Mage",
+                "Omega": "Tank",
+                "Omen": "Fighter",
+                "Ormarr": "Tank",
+                "Paine": "Assasin",
+                "Preyta": "Mage",
+                "Qi": "Fighter",
+                "Quillen": "Assasin",
+                "Raz": "Assasin",
+                "Riktor": "Fighter",
+                "Rouie": "Support",
+                "Rourke": "Fighter",
+                "Roxie": "Tank",
+                "Ryoma": "Fighter",
+                "Sephera": "Mage",
+                "Sinestrea": "Assasin",
+                "Skud": "Fighter",
+                "Slimz": "Carry",
+                "Stuart": "Carry",
+                "Superman": "Fighter",
+                "Taara": "Tank",
+                "Tachi": "Fighter",
+                "TeeMee": "Support",
+                "Teeri": "Carry",
+                "Tel'Annas": "Carry",
+                "Thane": "Tank",
+                "The Flash": "Assasin",
+                "Thorne": "Carry",
+                "Toro": "Tank",
+                "Tulen": "Mage",
+                "Valhein": "Carry",
+                "Veera": "Mage",
+                "Veres": "Fighter",
+                "Violet": "Carry",
+                "Volkath": "Fighter",
+                "Wiro": "Tank",
+                "Wisp": "Carry",
+                "Wonder Woman": "Fighter",
+                "WuKong": "Assasin",
+                "Xeniel": "Tank",
+                "Yan": "Fighter",
+                "Y'bneth": "Tank",
+                "Yena": "Fighter",
+                "Yorn": "Carry",
+                "Yue": "Mage",
+                "Zanis": "Fighter",
+                "Zata": "Assasin",
+                "Zephys": "Fighter",
+                "Zill": "Assasin",
+                "Zip": "Support",
+                "Zuka": "Fighter"
+            };
+
+
+            // Load and cache heropool.csv
+            function loadAndCacheHeroPool(callback) {
+                if (cachedHeroData) {
+                    // If data is already cached, use it
+                    callback(cachedHeroData);
+                } else {
+                    // Otherwise, fetch and cache the data
+                    Papa.parse('heropool.csv', {
+                        download: true,
+                        header: true,
+                        complete: function (results) {
+                            cachedHeroData = results.data; // Cache the data
+                            callback(cachedHeroData); // Proceed with the callback
+                        }
+                    });
+                }
+            }
+
+            // Call the function to load and cache the data initially
+            loadAndCacheHeroPool(function (data) {
+                // Table 1 - Hero selection
+                createTable(data, ['1-Combination', '1-Total Picks', '1-Wins', '1-Win Rate'], 'table-1', true);
+
+                // Table 2
+                createTable(data, ['2-Combination', '2-Total Picks', '2-Wins', '2-Win Rate'], 'table-2');
+
+                // Table 3
+                createTable(data, ['3-Combination', '3-Total Picks', '3-Wins', '3-Win Rate'], 'table-3');
+
+                // Table 4
+                // createTable(data, ['4-Combination', '4-Total Picks', '4-Wins', '4-Win Rate'], 'table-4');
+            });
+
+            // Handle filter button clicks
+            document.querySelectorAll('.filter-buttons button').forEach(button => {
+                button.addEventListener('click', function () {
+                    // Remove active class from all buttons
+                    document.querySelectorAll('.filter-buttons button').forEach(btn => btn.classList.remove('active'));
+                    // Add active class to the clicked button
+                    this.classList.add('active');
+                    heroTypeFilter = this.dataset.type; // Set the current filter type
+                    updateFilteredHeroes(); // Update the table based on the filter
+                });
+            });
+
+            // Function to create tables
+            function createTable(data, columns, tableId, isHeroSelectable = false) {
+                const table = document.getElementById(tableId);
+                table.innerHTML = ''; // Clear existing content
+
+                // Create the table header
+                const thead = document.createElement('thead');
+                const headerRow = document.createElement('tr');
+                columns.forEach(header => {
+                    const th = document.createElement('th');
+                    th.textContent = header;
+                    headerRow.appendChild(th);
+                });
+                thead.appendChild(headerRow);
+                table.appendChild(thead);
+
+                // Create the table body
+                const tbody = document.createElement('tbody');
+                data.forEach(row => {
+                    // Extract hero name and remove spaces
+                    const heroName = row['1-Combination'].replace(/\s+/g, '');
+
+                    // Only apply the hero type filter to the 1-Combination table
+                    if (isHeroSelectable && (heroTypeFilter === "all" || heroTypes[heroName] === heroTypeFilter)) {
+                        const tr = document.createElement('tr');
+                        columns.forEach(header => {
+                            const td = document.createElement('td');
+
+                            // Handle hero name selection
+                            if (header === '1-Combination') {
+                                td.classList.add('hero');
+                                td.textContent = heroName;
+                                td.addEventListener('click', function () {
+                                    toggleHeroSelection(heroName);
+                                });
+
+                                // Reapply highlight to already selected heroes
+                                if (selectedHeroes.includes(heroName)) {
+                                    td.classList.add('hero-selected');
+                                }
+                            } else {
+                                td.textContent = row[header].replace(/\s+/g, '');
+                            }
+
+                            // Apply gradient background based on Win Rate
+                            if (header.includes('Win Rate')) {
+                                const winRate = parseFloat(row[header]);
+                                if (!isNaN(winRate)) {
+                                    td.style.backgroundColor = getGradientColor(winRate);
+                                }
+                            }
+
+                            tr.appendChild(td);
+                        });
+                        tbody.appendChild(tr); // Append the row only if it matches the filter
+                    } else if (!isHeroSelectable) {
+                        // If it's not the 1-Combination table (e.g., 2-Combination or 3-Combination), display all rows
+                        const tr = document.createElement('tr');
+                        columns.forEach(header => {
+                            const td = document.createElement('td');
+                            td.textContent = row[header].replace(/\s+/g, '');
+
+                            // Apply gradient background based on Win Rate
+                            if (header.includes('Win Rate')) {
+                                const winRate = parseFloat(row[header]);
+                                if (!isNaN(winRate)) {
+                                    td.style.backgroundColor = getGradientColor(winRate);
+                                }
+                            }
+
+                            tr.appendChild(td);
+                        });
+                        tbody.appendChild(tr);
+                    }
+                });
+                table.appendChild(tbody);
+            }
+
+            // Toggle hero selection for filtering
+            function toggleHeroSelection(hero) {
+                const index = selectedHeroes.indexOf(hero);
+                if (index > -1) {
+                    // Hero is already selected, remove it
+                    selectedHeroes.splice(index, 1);
+                } else {
+                    // Hero is not selected, add it
+                    selectedHeroes.push(hero);
+                }
+                updateSelectedHeroes();
+                filterTables();
+            }
+
+            // Highlight selected heroes in 1-Combination table
+            function updateSelectedHeroes() {
+                const heroCells = document.querySelectorAll('#table-1 .hero');
+                heroCells.forEach(cell => {
+                    if (selectedHeroes.includes(cell.textContent)) {
+                        cell.classList.add('hero-selected');
+                    } else {
+                        cell.classList.remove('hero-selected');
+                    }
+                });
+            }
+
+            // Filter 2nd and 3rd tables based on selected heroes using AND logic
+            function filterTables() {
+                loadAndCacheHeroPool(function (data) {
+                    const filteredData2 = filterData(data, '2-Combination');
+                    const filteredData3 = filterData(data, '3-Combination');
+                    const filteredData4 = filterData(data, '4-Combination');
+
+                    // Recreate the tables with filtered data
+                    createTable(filteredData2, ['2-Combination', '2-Total Picks', '2-Wins', '2-Win Rate'], 'table-2');
+                    createTable(filteredData3, ['3-Combination', '3-Total Picks', '3-Wins', '3-Win Rate'], 'table-3');
+                    // createTable(filteredData4, ['4-Combination', '4-Total Picks', '4-Wins', '4-Win Rate'], 'table-4');
+                });
+            }
+
+            // Function to filter data based on selected heroes using AND logic
+            function filterData(data, column) {
+                if (selectedHeroes.length === 0) return data; // If no heroes are selected, show all data
+
+                return data.filter(row => {
+                    const combination = row[column].replace(/\s+/g, ''); // Remove spaces in the combination names
+                    return selectedHeroes.every(hero => combination.includes(hero));
+                });
+            }
+
+            // Function to update the filtered hero display in the 1-Combination table
+            function updateFilteredHeroes() {
+                loadAndCacheHeroPool(function (data) {
+                    createTable(data, ['1-Combination', '1-Total Picks', '1-Wins', '1-Win Rate'], 'table-1', true);
+                });
+            }
+
+            // Function to calculate gradient color based on win rate
+            function getGradientColor(winRate) {
+                // Map win rate (0-100) to a green gradient (light green to dark green)
+                const minGreen = 380; // Light green
+                const maxGreen = 0; // Dark green
+                const greenValue = Math.round(minGreen - (winRate / 100) * (minGreen - maxGreen));
+                return `rgb(${greenValue}, 255, ${greenValue})`;
+            }
+        });
+    </script>
+</body>
+
+
+</html>

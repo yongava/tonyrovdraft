@@ -1,0 +1,141 @@
+/* styles.css */
+body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    height: 1080px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.team-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.team-section, .hero-pool-section, .global-ban-section {
+    width: 45%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.hero-type-section{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+button{
+    border: 0px;
+    border-radius: 5px;
+    background-color: orange;
+    padding: 10px;
+}
+
+span{
+    font-size: xx-small;
+}
+
+.hero-type-section h3 {
+    font-size: small;
+}
+
+h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.ban-slots, .pick-slots, .hero-pool, .global-bans {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.ban-slot, .pick-slot, .hero {
+    width: 40px;
+    height: 55px; /* Increased height to accommodate text */
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #e0e0e0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ban-slot img, .pick-slot img, .hero img {
+    width: 100%;
+    height: 60%; /* Adjusted height to leave space for text */
+    border-radius: 8px;
+}
+
+.hero-details {
+    text-align: center;
+    font-size: 12px;
+}
+
+/* Styles for selected heroes */
+.hero.selected-blue {
+    border: 2px solid blue;
+}
+
+.hero.selected-blue:hover {
+    background-color: rgba(0, 0, 255, 0.2);
+}
+
+.hero.selected-red {
+    border: 2px solid red;
+}
+
+.hero.selected-red:hover {
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
+/* Style for active slot */
+.active-slot {
+    border: 2px solid orange;
+}
+
+/* Style for dimmed banned hero */
+.hero.banned {
+    filter: brightness(50%);
+}
+
+/* Center the controls */
+.center-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.center-controls label,
+.center-controls select,
+.center-controls button {
+    margin: 5px 0;
+}
+
+/* Swapped styles */
+.team-section.switched, .hero-pool-section.switched, .global-ban-section.switched {
+    order: -1;
+}

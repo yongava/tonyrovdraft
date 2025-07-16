@@ -1,0 +1,641 @@
+{
+    "airi": {
+        "positions": [
+            "JUG",
+            "DSL"
+        ]
+    },
+    "aleister": {
+        "positions": [
+            "MID",
+            "SUP"
+        ]
+    },
+    "alice": {
+        "positions": [
+            "SUP"
+        ]
+    },
+    "allain": {
+        "positions": [
+            "DSL"
+        ]
+    },
+    "amily": {
+        "positions": [
+            "DSL"
+        ]
+    },
+    "annette": {
+        "positions": [
+            "SUP",
+            "MID"
+        ]
+    },
+    "aoi": {
+        "positions": [
+            "JUG"
+        ]
+    },
+    "arduin": {
+        "positions": [
+            "SUP"
+        ]
+    },
+    "arum": {
+        "positions": [
+            "SUP",
+            "DSL"
+        ]
+    },
+    "astrid": {
+        "positions": [
+            "JUG",
+            "DSL"
+        ]
+    },
+    "ata": {
+        "positions": [
+            "DSL",
+            "SUP"
+        ]
+    },
+    "aya": {
+        "positions": [
+            "MID",
+            "SUP"
+        ]
+    },
+    "azzenka": {
+        "positions": [
+            "MID"
+        ]
+    },
+    "baldum": {
+        "positions": [
+            "SUP"
+        ]
+    },
+    "kaine": {
+        "positions": [
+            "DSL",
+            "SUP"
+        ]
+    },
+    "bijan": {
+        "positions": [
+            "SUP",
+            "DSL"
+        ]
+    },
+    "bonnie": {
+        "positions": [
+            "MID"
+        ]
+    },
+    "bright": {
+        "positions": [
+            "JUG",
+            "ADL"
+        ]
+    },
+    "butterfly": {
+        "positions": [
+            "JUG"
+        ]
+    },
+    "capheny": {
+        "positions": [
+            "ADL"
+        ]
+    },
+    "celica": {
+        "positions": [
+            "ADL"
+        ]
+    },
+    "charlotte": {
+        "positions": [
+            "DSL"
+        ]
+    },
+    "chaugnar": {
+        "positions": [
+            "SUP"
+        ]
+    },
+    "cresht": {
+        "positions": [
+            "SUP"
+        ]
+    },
+    "darcy": {
+        "positions": [
+            "MID",
+            "JUG"
+        ]
+    },
+    "dextra": {
+        "positions": [
+            "DSL"
+        ]
+    },
+    "diaochan": {
+        "positions": [
+            "MID"
+        ]
+    },
+    "dirak": {
+        "positions": [
+            "MID"
+        ]
+    },
+    "dolia": {
+        "positions": [
+            "SUP"
+        ]
+    },
+    "elandorr": {
+        "positions": [
+            "ADL",
+            "JUG"
+        ]
+    },
+    "elsu": {
+        "positions": [
+            "ADL"
+        ]
+    },
+    "enzo": {
+        "positions": [
+            "JUG",
+            "SUP"
+        ]
+    },
+    "erin": {
+        "positions": [
+            "ADL",
+            "MID"
+        ]
+    },
+    "errol": {
+        "positions": [
+            "JUG"
+        ]
+    },
+    "fennik": {
+        "positions": [
+            "ADL",
+            "JUG"
+        ]
+    },
+    "theflash": {
+        "positions": [
+            "JUG",
+            "MID"
+        ]
+    },
+    "florentino": {
+        "positions": [
+            "DSL"
+        ]
+    },
+    "gildur": {
+        "positions": [
+            "SUP"
+        ]
+    },
+    "grakk": {
+        "positions": [
+            "SUP"
+        ]
+    },
+    "hayate": {
+        "positions": [
+            "ADL"
+        ]
+    },
+    "iggy": {
+        "positions": [
+            "MID"
+        ]
+    },
+    "ignis": {
+        "positions": [
+            "MID"
+        ]
+    },
+    "ilumia": {
+        "positions": [
+            "MID"
+        ]
+    },
+    "ishar": {
+        "positions": [
+            "MID"
+        ]
+    },
+    "jinna": {
+        "positions": [
+            "MID"
+        ]
+    },
+    "stuart": {
+        "positions": [
+            "ADL"
+        ]
+    },
+    "kahlii": {
+        "positions": [
+            "MID"
+        ]
+    },
+    "keera": {
+        "positions": [
+            "JUG"
+        ]
+    },
+    "kilgroth": {
+        "positions": [
+            "DSL"
+        ]
+    },
+    "kriknak": {
+        "positions": [
+            "JUG"
+        ]
+    },
+    "krixi": {
+        "positions": [
+            "MID"
+        ]
+    },
+    "krizzix": {
+        "positions": [
+            "SUP"
+        ]
+    },
+    "lauriel": {
+        "positions": [
+            "DSL",
+            "MID"
+        ]
+    },
+    "laville": {
+        "positions": [
+            "ADL"
+        ]
+    },
+    "liliana": {
+        "positions": [
+            "MID"
+        ]
+    },
+    "lindis": {
+        "positions": [
+            "JUG",
+            "ADL"
+        ]
+    },
+    "lorion": {
+        "positions": [
+            "MID"
+        ]
+    },
+    "lubu": {
+        "positions": [
+            "JUG",
+            "DSL"
+        ]
+    },
+    "lumburr": {
+        "positions": [
+            "SUP"
+        ]
+    },
+    "maloch": {
+        "positions": [
+            "SUP"
+        ]
+    },
+    "marja": {
+        "positions": [
+            "DSL",
+            "MID"
+        ]
+    },
+    "max": {
+        "positions": [
+            "DSL"
+        ]
+    },
+    "mganga": {
+        "positions": [
+            "MID"
+        ]
+    },
+    "mina": {
+        "positions": [
+            "DSL",
+            "SUP"
+        ]
+    },
+    "ming": {
+        "positions": [
+            "SUP"
+        ]
+    },
+    "moren": {
+        "positions": [
+            "ADL"
+        ]
+    },
+    "mortos": {
+        "positions": [
+            "DSL",
+            "SUP"
+        ]
+    },
+    "murad": {
+        "positions": [
+            "SUP",
+            "JUG",
+            "DSL"
+        ]
+    },
+    "nakroth": {
+        "positions": [
+            "JUG"
+        ]
+    },
+    "natalya": {
+        "positions": [
+            "MID"
+        ]
+    },
+    "omega": {
+        "positions": [
+            "SUP"
+        ]
+    },
+    "omen": {
+        "positions": [
+            "DSL"
+        ]
+    },
+    "ormarr": {
+        "positions": [
+            "SUP"
+        ]
+    },
+    "paine": {
+        "positions": [
+            "JUG"
+        ]
+    },
+    "helen": {
+        "positions": [
+            "SUP"
+        ]
+    },
+    "preyta": {
+        "positions": [
+            "MID"
+        ]
+    },
+    "qi": {
+        "positions": [
+            "DSL"
+        ]
+    },
+    "quillen": {
+        "positions": [
+            "JUG"
+        ]
+    },
+    "raz": {
+        "positions": [
+            "MID"
+        ]
+    },
+    "riktor": {
+        "positions": [
+            "SUP",
+            "DSL"
+        ]
+    },
+    "rouie": {
+        "positions": [
+            "MID",
+            "SUP"
+        ]
+    },
+    "rourke": {
+        "positions": [
+            "JUG"
+        ]
+    },
+    "roxie": {
+        "positions": [
+            "SUP",
+            "DSL"
+        ]
+    },
+    "ryoma": {
+        "positions": [
+            "JUG",
+            "DSL"
+        ]
+    },
+    "sephera": {
+        "positions": [
+            "MID"
+        ]
+    },
+    "sinestrea": {
+        "positions": [
+            "JUG"
+        ]
+    },
+    "skud": {
+        "positions": [
+            "JUG",
+            "DSL"
+        ]
+    },
+    "slimz": {
+        "positions": [
+            "ADL"
+        ]
+    },
+    "superman": {
+        "positions": [
+            "SUP",
+            "DSL"
+        ]
+    },
+    "taara": {
+        "positions": [
+            "DSL",
+            "SUP",
+            "JUG"
+        ]
+    },
+    "tachi": {
+        "positions": [
+            "DSL",
+            "SUP",
+            "JUG"
+        ]
+    },
+    "teemee": {
+        "positions": [
+            "SUP"
+        ]
+    },
+    "teeri": {
+        "positions": [
+            "ADL"
+        ]
+    },
+    "telannas": {
+        "positions": [
+            "ADL"
+        ]
+    },
+    "thane": {
+        "positions": [
+            "SUP"
+        ]
+    },
+    "thorne": {
+        "positions": [
+            "ADL"
+        ]
+    },
+    "toro": {
+        "positions": [
+            "SUP"
+        ]
+    },
+    "tulen": {
+        "positions": [
+            "JUG",
+            "MID"
+        ]
+    },
+    "valhein": {
+        "positions": [
+            "ADL"
+        ]
+    },
+    "veera": {
+        "positions": [
+            "MID"
+        ]
+    },
+    "veres": {
+        "positions": [
+            "DSL",
+            "SUP",
+            "JUG"
+        ]
+    },
+    "violet": {
+        "positions": [
+            "ADL"
+        ]
+    },
+    "volkath": {
+        "positions": [
+            "JUG"
+        ]
+    },
+    "wiro": {
+        "positions": [
+            "JUG",
+            "SUP"
+        ]
+    },
+    "wisp": {
+        "positions": [
+            "ADL"
+        ]
+    },
+    "wonderwoman": {
+        "positions": [
+            "JUG"
+        ]
+    },
+    "wukong": {
+        "positions": [
+            "DSL",
+            "JUG"
+        ]
+    },
+    "xeniel": {
+        "positions": [
+            "DSL",
+            "SUP"
+        ]
+    },
+    "yan": {
+        "positions": [
+            "DSL",
+            "JUG"
+        ]
+    },
+    "ybneth": {
+        "positions": [
+            "SUP"
+        ]
+    },
+    "yena": {
+        "positions": [
+            "DSL"
+        ]
+    },
+    "yorn": {
+        "positions": [
+            "ADL"
+        ]
+    },
+    "yue": {
+        "positions": [
+            "MID"
+        ]
+    },
+    "zanis": {
+        "positions": [
+            "JUG",
+            "SUP",
+            "DSL"
+        ]
+    },
+    "zata": {
+        "positions": [
+            "MID"
+        ]
+    },
+    "zephys": {
+        "positions": [
+            "JUG"
+        ]
+    },
+    "zill": {
+        "positions": [
+            "MID",
+            "JUG"
+        ]
+    },
+    "zip": {
+        "positions": [
+            "SUP"
+        ]
+    },
+    "zuka": {
+        "positions": [
+            "JUG"
+        ]
+    }
+}
