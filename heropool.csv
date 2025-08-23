@@ -1,78 +1,78 @@
 1-Combination,1-Total Picks,1-Wins,1-Win Rate,2-Combination,2-Total Picks,2-Wins,2-Win Rate,3-Combination,3-Total Picks,3-Wins,3-Win Rate
-Keera,6,5,83.3,"Skud , Tel'Annas",2,1,50,"Eland'orr , Rouie , Skud",1,1,100
-Hayate,5,5,100,"Hayate , Raz",2,2,100,"Eland'orr , Skud , Tel'Annas",1,1,100
-Tel'Annas,4,3,75,"Keera , Raz",2,2,100,"Arduin , Eland'orr , Skud",1,1,100
-Raz,4,3,75,"Eland'orr , Stuart",2,1,50,"Rouie , Skud , Tel'Annas",1,1,100
-Bolt Baron,4,4,100,"Bolt Baron , Raz",2,2,100,"Arduin , Rouie , Skud",1,1,100
-TeeMee,4,2,50,"Raz , TeeMee",2,1,50,"Arduin , Skud , Tel'Annas",1,1,100
-Marja,4,3,75,"Hayate , TeeMee",2,2,100,"Eland'orr , Rouie , Tel'Annas",1,1,100
-Eland'orr,3,2,66.7,"Keera , Tulen",2,2,100,"Arduin , Eland'orr , Rouie",1,1,100
-Enzo,3,3,100,"Capheny , Keera",2,1,50,"Arduin , Eland'orr , Tel'Annas",1,1,100
-Capheny,3,2,66.7,"Mganga , Ming",2,2,100,"Arduin , Rouie , Tel'Annas",1,1,100
-Toro,3,3,100,"Hayate , Ryoma",2,2,100,"Hayate , Keera , Raz",1,1,100
-Qi,3,2,66.7,"Iggy , Qi",2,1,50,"Hayate , Keera , Valhein",1,1,100
-Iggy,3,2,66.7,"Qi , Tel'Annas",2,2,100,"Baldum , Hayate , Keera",1,1,100
-Riktor,3,2,66.7,"Billow , Tel'Annas",2,1,50,"Hayate , Raz , Valhein",1,1,100
-Skud,2,1,50,"Enzo , Iggy",2,2,100,"Baldum , Hayate , Raz",1,1,100
-Rouie,2,2,100,"Airi , Keera",2,1,50,"Baldum , Hayate , Valhein",1,1,100
-Arduin,2,2,100,"Eland'orr , Skud",1,1,100,"Keera , Raz , Valhein",1,1,100
-Valhein,2,1,50,"Rouie , Skud",1,1,100,"Baldum , Keera , Raz",1,1,100
-Aleister,2,1,50,"Arduin , Skud",1,1,100,"Baldum , Keera , Valhein",1,1,100
-Stuart,2,1,50,"Eland'orr , Rouie",1,1,100,"Baldum , Raz , Valhein",1,1,100
-Murad,2,1,50,"Eland'orr , Tel'Annas",1,1,100,"Aleister , Eland'orr , Omen",1,1,100
-Mina,2,2,100,"Arduin , Eland'orr",1,1,100,"Eland'orr , Omen , Stuart",1,1,100
-D'Arcy,2,1,50,"Rouie , Tel'Annas",1,1,100,"Eland'orr , Enzo , Omen",1,1,100
-Ignis,2,1,50,"Arduin , Rouie",1,1,100,"Aleister , Omen , Stuart",1,1,100
-Tulen,2,2,100,"Arduin , Tel'Annas",1,1,100,"Aleister , Enzo , Omen",1,1,100
-Maloch,2,2,100,"Hayate , Keera",1,1,100,"Enzo , Omen , Stuart",1,1,100
-Mganga,2,2,100,"Hayate , Valhein",1,1,100,"Aleister , Eland'orr , Stuart",1,1,100
-Wisp,2,2,100,"Baldum , Hayate",1,1,100,"Aleister , Eland'orr , Enzo",1,1,100
-Ming,2,2,100,"Keera , Valhein",1,1,100,"Eland'orr , Enzo , Stuart",1,1,100
-Ryoma,2,2,100,"Baldum , Keera",1,1,100,"Aleister , Enzo , Stuart",1,1,100
-Liliana,2,1,50,"Raz , Valhein",1,1,100,"Bolt Baron , Murad , Raz",1,1,100
-Billow,2,1,50,"Baldum , Raz",1,1,100,"Bolt Baron , Hayate , Murad",1,1,100
-Airi,2,1,50,"Baldum , Valhein",1,1,100,"Bolt Baron , Murad , TeeMee",1,1,100
-Baldum,1,1,100,"Eland'orr , Omen",1,1,100,"Hayate , Murad , Raz",1,1,100
-Omen,1,1,100,"Aleister , Omen",1,1,100,"Murad , Raz , TeeMee",1,1,100
-Grakk,1,1,100,"Omen , Stuart",1,1,100,"Hayate , Murad , TeeMee",1,1,100
-Dolia,1,1,100,"Enzo , Omen",1,1,100,"Bolt Baron , Hayate , Raz",1,1,100
-Nakroth,1,1,100,"Aleister , Eland'orr",1,1,100,"Bolt Baron , Raz , TeeMee",1,1,100
-Florentino,1,1,100,"Eland'orr , Enzo",1,1,100,"Bolt Baron , Hayate , TeeMee",1,1,100
-Thane,1,0,0,"Aleister , Stuart",1,1,100,"Hayate , Raz , TeeMee",1,1,100
-Tachi,1,1,100,"Aleister , Enzo",1,1,100,"D'Arcy , Ignis , Mina",1,1,100
-Alice,1,1,100,"Enzo , Stuart",1,1,100,"D'Arcy , Marja , Mina",1,1,100
-Ilumia,1,1,100,"Bolt Baron , Murad",1,1,100,"D'Arcy , Grakk , Mina",1,1,100
-Kriknak,1,1,100,"Murad , Raz",1,1,100,"Ignis , Marja , Mina",1,1,100
-Fennik,1,0,0,"Hayate , Murad",1,1,100,"Grakk , Ignis , Mina",1,1,100
-Zuka,1,1,100,"Murad , TeeMee",1,1,100,"Grakk , Marja , Mina",1,1,100
-Roxie,1,0,0,"Bolt Baron , Hayate",1,1,100,"D'Arcy , Ignis , Marja",1,1,100
-Omega,1,0,0,"Bolt Baron , TeeMee",1,1,100,"D'Arcy , Grakk , Ignis",1,1,100
-,,,,"D'Arcy , Mina",1,1,100,"D'Arcy , Grakk , Marja",1,1,100
-,,,,"Ignis , Mina",1,1,100,"Grakk , Ignis , Marja",1,1,100
-,,,,"Marja , Mina",1,1,100,"Dolia , Keera , Tulen",1,1,100
-,,,,"Grakk , Mina",1,1,100,"Capheny , Keera , Tulen",1,1,100
-,,,,"D'Arcy , Ignis",1,1,100,"Keera , Maloch , Tulen",1,1,100
-,,,,"D'Arcy , Marja",1,1,100,"Capheny , Dolia , Tulen",1,1,100
-,,,,"D'Arcy , Grakk",1,1,100,"Dolia , Maloch , Tulen",1,1,100
-,,,,"Ignis , Marja",1,1,100,"Capheny , Maloch , Tulen",1,1,100
-,,,,"Grakk , Ignis",1,1,100,"Capheny , Dolia , Keera",1,1,100
-,,,,"Grakk , Marja",1,1,100,"Dolia , Keera , Maloch",1,1,100
-,,,,"Dolia , Tulen",1,1,100,"Capheny , Keera , Maloch",1,1,100
-,,,,"Capheny , Tulen",1,1,100,"Capheny , Dolia , Maloch",1,1,100
-,,,,"Maloch , Tulen",1,1,100,"Marja , Mganga , Nakroth",1,1,100
-,,,,"Dolia , Keera",1,1,100,"Marja , Nakroth , Wisp",1,1,100
-,,,,"Keera , Maloch",1,1,100,"Marja , Ming , Nakroth",1,1,100
-,,,,"Capheny , Dolia",1,1,100,"Marja , Mganga , Wisp",1,1,100
-,,,,"Dolia , Maloch",1,1,100,"Marja , Mganga , Ming",1,1,100
-,,,,"Capheny , Maloch",1,1,100,"Marja , Ming , Wisp",1,1,100
-,,,,"Marja , Nakroth",1,1,100,"Mganga , Nakroth , Wisp",1,1,100
-,,,,"Marja , Mganga",1,1,100,"Mganga , Ming , Nakroth",1,1,100
-,,,,"Marja , Wisp",1,1,100,"Ming , Nakroth , Wisp",1,1,100
-,,,,"Marja , Ming",1,1,100,"Mganga , Ming , Wisp",1,1,100
-,,,,"Mganga , Nakroth",1,1,100,"Maloch , Mina , Ryoma",1,1,100
-,,,,"Nakroth , Wisp",1,1,100,"Hayate , Mina , Ryoma",1,1,100
-,,,,"Ming , Nakroth",1,1,100,"Mina , Ryoma , TeeMee",1,1,100
-,,,,"Mganga , Wisp",1,1,100,"Hayate , Maloch , Mina",1,1,100
+Keera,6,5,83.3,"Lorion,Annette",4,2,50%,"Eland'orr , Rouie , Skud",1,1,100
+Hayate,5,5,100,"Mganga,Annette",4,1,25%,"Eland'orr , Skud , Tel'Annas",1,1,100
+Tel'Annas,4,3,75,"Liliana,Annette",2,2,100%,"Arduin , Eland'orr , Skud",1,1,100
+Raz,4,3,75,"Raz,Annette",1,1,100%,"Rouie , Skud , Tel'Annas",1,1,100
+Bolt Baron,4,4,100,"Iggy,Annette",1,0,0%,"Arduin , Rouie , Skud",1,1,100
+TeeMee,4,2,50,"Goverra,Annette",1,0,0%,"Arduin , Skud , Tel'Annas",1,1,100
+Marja,4,3,75,"Ignis,Annette",1,1,100%,"Eland'orr , Rouie , Tel'Annas",1,1,100
+Eland'orr,3,2,66.7,"Rouie,Arduin",2,1,50%,"Arduin , Eland'orr , Rouie",1,1,100
+Enzo,3,3,100,"Annette,Arduin",2,1,50%,"Arduin , Eland'orr , Tel'Annas",1,1,100
+Capheny,3,2,66.7,"Iggy,Arduin",1,0,0%,"Arduin , Rouie , Tel'Annas",1,1,100
+Toro,3,3,100,"Yue,Arduin",1,0,0%,"Hayate , Keera , Raz",1,1,100
+Qi,3,2,66.7,"Lorion,Cresht",1,1,100%,"Hayate , Keera , Valhein",1,1,100
+Iggy,3,2,66.7,"Natalya,Cresht",1,0,0%,"Baldum , Hayate , Keera",1,1,100
+Riktor,3,2,66.7,"Raz,Dolia",1,0,0%,"Hayate , Raz , Valhein",1,1,100
+Skud,2,1,50,"Mganga,Dolia",1,1,100%,"Baldum , Hayate , Raz",1,1,100
+Rouie,2,2,100,"Liliana,Dolia",1,0,0%,"Baldum , Hayate , Valhein",1,1,100
+Arduin,2,2,100,"Yue,Dolia",1,1,100%,"Keera , Raz , Valhein",1,1,100
+Valhein,2,1,50,"Maloch,Dolia",1,0,0%,"Baldum , Keera , Raz",1,1,100
+Aleister,2,1,50,"Lorion,Enzo",6,3,50%,"Baldum , Keera , Valhein",1,1,100
+Stuart,2,1,50,"Rouie,Enzo",2,0,0%,"Baldum , Raz , Valhein",1,1,100
+Murad,2,1,50,"Goverra,Enzo",2,1,50%,"Aleister , Eland'orr , Omen",1,1,100
+Mina,2,2,100,"Raz,Enzo",1,1,100%,"Eland'orr , Omen , Stuart",1,1,100
+D'Arcy,2,1,50,"Mganga,Enzo",1,0,0%,"Eland'orr , Enzo , Omen",1,1,100
+Ignis,2,1,50,"Liliana,Enzo",1,0,0%,"Aleister , Omen , Stuart",1,1,100
+Tulen,2,2,100,"Annette,Enzo",1,1,100%,"Aleister , Enzo , Omen",1,1,100
+Maloch,2,2,100,"Yue,Enzo",1,0,0%,"Enzo , Omen , Stuart",1,1,100
+Mganga,2,2,100,"Natalya,Enzo",1,0,0%,"Aleister , Eland'orr , Stuart",1,1,100
+Wisp,2,2,100,"Iggy,Gildur",1,1,100%,"Aleister , Eland'orr , Enzo",1,1,100
+Ming,2,2,100,"Yue,Gildur",1,0,0%,"Eland'orr , Enzo , Stuart",1,1,100
+Ryoma,2,2,100,"Mganga,Ishar",1,1,100%,"Aleister , Enzo , Stuart",1,1,100
+Liliana,2,1,50,"Maloch,Ishar",1,0,0%,"Bolt Baron , Murad , Raz",1,1,100
+Billow,2,1,50,"Raz,Krizzix",4,1,25%,"Bolt Baron , Hayate , Murad",1,1,100
+Airi,2,1,50,"Liliana,Krizzix",2,1,50%,"Bolt Baron , Murad , TeeMee",1,1,100
+Baldum,1,1,100,"Lorion,Maloch",2,0,0%,"Hayate , Murad , Raz",1,1,100
+Omen,1,1,100,"Mganga,Maloch",2,0,0%,"Murad , Raz , TeeMee",1,1,100
+Grakk,1,1,100,"Raz,Mina",1,0,0%,"Hayate , Murad , TeeMee",1,1,100
+Dolia,1,1,100,"Liliana,Mina",1,0,0%,"Bolt Baron , Hayate , Raz",1,1,100
+Nakroth,1,1,100,"Raz,Ming",2,1,50%,"Bolt Baron , Raz , TeeMee",1,1,100
+Florentino,1,1,100,"Lorion,Ming",1,1,100%,"Bolt Baron , Hayate , TeeMee",1,1,100
+Thane,1,0,0,"Lorion,Omega",1,0,0%,"Hayate , Raz , TeeMee",1,1,100
+Tachi,1,1,100,"Lorion,Rouie",1,1,100%,"D'Arcy , Ignis , Mina",1,1,100
+Alice,1,1,100,"Mganga,Rouie",1,1,100%,"D'Arcy , Marja , Mina",1,1,100
+Ilumia,1,1,100,"Lorion,Roxie",2,1,50%,"D'Arcy , Grakk , Mina",1,1,100
+Kriknak,1,1,100,"Raz,Roxie",1,1,100%,"Ignis , Marja , Mina",1,1,100
+Fennik,1,0,0,"Lorion,Taara",1,0,0%,"Grakk , Ignis , Mina",1,1,100
+Zuka,1,1,100,"Raz,TeeMee",10,5,50%,"Grakk , Marja , Mina",1,1,100
+Roxie,1,0,0,"Rouie,TeeMee",5,3,60%,"D'Arcy , Ignis , Marja",1,1,100
+Omega,1,0,0,"Iggy,TeeMee",3,1,33%,"D'Arcy , Grakk , Ignis",1,1,100
+,,,,"Mganga,TeeMee",2,2,100%,"D'Arcy , Grakk , Marja",1,1,100
+,,,,"Annette,TeeMee",2,1,50%,"Grakk , Ignis , Marja",1,1,100
+,,,,"Ignis,TeeMee",2,0,0%,"Dolia , Keera , Tulen",1,1,100
+,,,,"Lorion,TeeMee",1,0,0%,"Capheny , Keera , Tulen",1,1,100
+,,,,"Liliana,TeeMee",1,0,0%,"Keera , Maloch , Tulen",1,1,100
+,,,,"Goverra,TeeMee",1,1,100%,"Capheny , Dolia , Tulen",1,1,100
+,,,,"Natalya,TeeMee",1,0,0%,"Dolia , Maloch , Tulen",1,1,100
+,,,,"Lorion,Thane",1,0,0%,"Capheny , Maloch , Tulen",1,1,100
+,,,,"Raz,Thane",1,1,100%,"Capheny , Dolia , Keera",1,1,100
+,,,,"Rouie,Toro",9,9,100%,"Dolia , Keera , Maloch",1,1,100
+,,,,"Iggy,Toro",9,7,78%,"Capheny , Keera , Maloch",1,1,100
+,,,,"Annette,Toro",4,1,25%,"Capheny , Dolia , Maloch",1,1,100
+,,,,"Goverra,Toro",2,0,0%,"Marja , Mganga , Nakroth",1,1,100
+,,,,"Mganga,Toro",1,1,100%,"Marja , Nakroth , Wisp",1,1,100
+,,,,"Natalya,Toro",1,1,100%,"Marja , Ming , Nakroth",1,1,100
+,,,,"Ignis,Toro",1,0,0%,"Marja , Mganga , Wisp",1,1,100
+,,,,"Liliana,Wiro",1,0,0%,"Marja , Mganga , Ming",1,1,100
+,,,,"Lorion,Xeniel",2,0,0%,"Marja , Ming , Wisp",1,1,100
+,,,,"Rouie,Xeniel",1,1,100%,"Mganga , Nakroth , Wisp",1,1,100
+,,,,"Liliana,Xeniel",1,0,0%,"Mganga , Ming , Nakroth",1,1,100
+,,,,"Iggy,Y'bneth",2,1,50%,"Ming , Nakroth , Wisp",1,1,100
+,,,,"Lorion,Y'bneth",1,0,0%,"Mganga , Ming , Wisp",1,1,100
+,,,,"Raz,Y'bneth",1,1,100%,"Maloch , Mina , Ryoma",1,1,100
+,,,,"Annette,Y'bneth",1,1,100%,"Hayate , Mina , Ryoma",1,1,100
+,,,,"Goverra,Y'bneth",1,1,100%,"Mina , Ryoma , TeeMee",1,1,100
+,,,,"Lorion,Zip",1,0,0%,"Hayate , Maloch , Mina",1,1,100
 ,,,,"Ming , Wisp",1,1,100,"Maloch , Mina , TeeMee",1,1,100
 ,,,,"Mina , Ryoma",1,1,100,"Hayate , Mina , TeeMee",1,1,100
 ,,,,"Maloch , Mina",1,1,100,"Hayate , Maloch , Ryoma",1,1,100
