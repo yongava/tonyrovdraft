@@ -204,6 +204,11 @@
         "positions": [
             "SUP"
         ]
+        },
+    "goverra": {
+        "positions": [
+            "MID"
+        ]
     },
     "grakk": {
         "positions": [
@@ -396,6 +401,11 @@
     "helen": {
         "positions": [
             "SUP"
+        ]
+         },
+    "heino": {
+        "positions": [
+            "MID"
         ]
     },
     "preyta": {
