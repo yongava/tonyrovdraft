@@ -1,74 +1,74 @@
 1-Combination,1-Total Picks,1-Wins,1-Win Rate,2-Combination,2-Total Picks,2-Wins,2-Win Rate,3-Combination,3-Total Picks,3-Wins,3-Win Rate
-Tachi,19,10,53,"Goverra,Enzo",3,2,67,"Keera,Annette,Toro",2,1,50
-Hayate,17,10,59,"Iggy,Cresht",3,0,0,"Keera,Mganga,Kaine",2,2,100
-Keera,16,10,63,"Lorion,Annette",3,1,33,"Nakroth,Iggy,Toro",2,0,0
-Elsu,16,10,63,"Lorion,Enzo",3,1,33,"Sinestrea,Raz,Maloch",2,2,100
-Toro,16,6,38,"Lorion,Kaine",3,3,100,"Aoi,Annette,Maloch",1,0,0
-Marja,14,5,36,"Mganga,Annette",3,2,67,"Aoi,Iggy,Enzo",1,1,100
-Lorion,14,7,50,"Raz,Annette",3,2,67,"Aoi,Iggy,TeeMee",1,1,100
-Stuart,14,8,57,"Annette,Kaine",2,1,50,"Aoi,Ignis,Heino",1,1,100
-Skud,13,7,54,"Goverra,Maloch",2,0,0,"Aoi,Liliana,Maloch",1,0,0
-Raz,13,6,46,"Heino,Enzo",2,0,0,"Aoi,Raz,Kaine",1,0,0
+Tachi,20,11,55,"Goverra,Enzo",3,2,67,"Keera,Annette,Toro",2,1,50
+Marja,18,8,44,"Iggy,Cresht",3,0,0,"Keera,Mganga,Kaine",2,2,100
+Enzo,17,8,47,"Lorion,Annette",3,1,33,"Nakroth,Iggy,Toro",2,0,0
+Hayate,17,10,59,"Lorion,Enzo",3,1,33,"Sinestrea,Raz,Maloch",2,2,100
+Toro,17,7,41,"Lorion,Kaine",3,3,100,"Aoi,Annette,Maloch",1,0,0
+Elsu,16,10,63,"Mganga,Annette",3,2,67,"Aoi,Iggy,Enzo",1,1,100
+Keera,16,10,63,"Raz,Annette",3,2,67,"Aoi,Iggy,TeeMee",1,1,100
+Maloch,15,9,60,"Annette,Kaine",2,1,50,"Aoi,Ignis,Heino",1,1,100
+Lorion,14,7,50,"Goverra,Maloch",2,0,0,"Aoi,Liliana,Maloch",1,0,0
+Stuart,14,8,57,"Heino,Enzo",2,0,0,"Aoi,Raz,Kaine",1,0,0
 Capheny,13,4,31,"Ignis,Enzo",2,1,50,"Aoi,Raz,Rouie",1,0,0
-Mganga,12,8,67,"Mganga,Heino",2,1,50,"Aoi,Rouie,Thane",1,1,100
-Valhein,12,8,67,"Mganga,Kaine",2,2,100,"Billow,Goverra,Enzo",1,0,0
-Enzo,12,5,42,"Raz,Enzo",2,2,100,"Billow,Goverra,Maloch",1,0,0
-Qi,11,7,64,"Rouie,Enzo",2,2,100,"Billow,Goverra,Toro",1,1,100
-TeeMee,11,7,64,"Annette,Maloch",1,1,100,"Billow,Ignis,Heino",1,0,0
-Florentino,10,6,60,"Annette,Thane",1,0,0,"Billow,Lorion,Enzo",1,0,0
-Biron,10,5,50,"Annette,Toro",1,0,0,"Billow,Mganga,Ming",1,1,100
-Sinestrea,10,8,80,"Annette,Y'bneth",1,1,100,"Billow,Mganga,Tachi",1,1,100
-Riktor,9,4,44,"Goverra,TeeMee",1,1,100,"Billow,Raz,Toro",1,0,0
-Billow,9,4,44,"Goverra,Toro",1,1,100,"Billow,Yue,Toro",1,1,100
-Aoi,8,4,50,"Goverra,Y'bneth",1,0,0,"Bolt Barron,Annette Kaine",1,1,100
-Goverra,8,4,50,"Heino,Grakk",1,1,100,"Bolt Barron,Goverra,Toro",1,0,0
-Maloch,8,3,38,"Heino,Omega",1,1,100,"Bolt Barron,Iggy,Toro",1,0,0
-Maloch,7,6,86,"Heino,TeeMee",1,1,100,"Bolt Barron,Mganga,Annette",1,1,100
-Liliana,7,4,57,"Iggy,Enzo",1,1,100,"Bolt Barron,Raz,Enzo",1,1,100
-Iggy,7,4,57,"Iggy,Heino",1,1,100,"Eland'orr,Ignis,Toro",1,0,0
-Kaine,7,5,71,"Iggy,TeeMee",1,1,100,"Eland'orr,Liliana,Toro",1,0,0
-Ryoma,6,4,67,"Iggy,Toro",1,1,100,"Enzo,Lorion,Annette",1,1,100
-Zephys,6,3,50,"Ignis,Heino",1,1,100,"Enzo,Lorion,Ming",1,1,100
-Ignis,6,3,50,"Ignis,Maloch",1,0,0,"Enzo,Mganga,Heino",1,0,0
-Annette,6,3,50,"Ignis,TeeMee",1,1,100,"Enzo,Mganga,Rouie",1,0,0
-Annette,6,5,83,"Ignis,Toro",1,0,0,"Enzo,Raz,Grakk",1,1,100
-Enzo,5,3,60,"Liliana,Enzo",1,0,0,"Fennik,Heino,Enzo",1,0,0
-BoltBaron,5,3,60,"Liliana,Heino",1,1,100,"Keera,Goverra,Enzo",1,0,0
-Rouie,5,4,80,"Liliana,Krizzix",1,1,100,"Keera,Goverra,Y'bneth",1,1,100
-Heino,5,3,60,"Liliana,Maloch",1,0,0,"Keera,Ignis,Maloch",1,0,0
-Wisp,5,3,60,"Liliana,Rouie",1,0,0,"Keera,Ignis,Toro",1,1,100
-Eland'orr,5,3,60,"Liliana,TeeMee",1,1,100,"Keera,Liliana,Enzo",1,1,100
-Heino,5,3,60,"Liliana,Toro",1,1,100,"Keera,Liliana,Krizzix",1,0,0
-Yena,4,0,0,"Lorion,Mina",1,0,0,"Keera,Lorion,Annette",1,1,100
-Nakroth,4,2,50,"Lorion,Ming",1,0,0,"Keera,Lorion,Kaine",1,1,100
-Marja,4,3,75,"Lorion,Rouie",1,1,100,"Keera,Mganga,Annette",1,1,100
-Fennik,4,2,50,"Lorion,TeeMee",1,0,0,"Keera,Natalya,Wiro",1,0,0
-Thane,4,2,50,"Lorion,Toro",1,1,100,"Keera,Raz,Thane",1,0,0
-Rouie,4,1,25,"Mganga,Maloch",1,1,100,"Keera,Yue,Kaine",1,1,100
-Natalya,3,0,0,"Mganga,Mina",1,0,0,"Marja,Goverra,Toro",1,1,100
-Omega,3,3,100,"Mganga,Ming",1,1,100,"Marja,Lorion,Enzo",1,1,100
-Ming,3,2,67,"Mganga,Rouie",1,1,100,"Marja,Raz,TeeMee",1,0,0
-Murad,2,2,100,"Mganga,Tachi",1,0,0,"Marja,Rouie,Thane",1,1,100
-Bolt Barron,2,2,100,"Natalya,Maloch",1,0,0,"Murad,Lorion,Toro",1,0,0
-Eland'orr,2,0,0,"Natalya,TeeMee",1,0,0,"Nakroth,Liliana,Rouie",1,1,100
-Yue,2,2,100,"Natalya,Wiro",1,0,0,"Nakroth,Raz,TeeMee",1,1,100
-Tulen,2,2,100,"Raz,Grakk",1,0,0,"Sinestrea,Heino,TeeMee",1,1,100
-Violet,2,1,50,"Raz,Heino",1,0,0,"Sinestrea,Iggy,Cresht",1,1,100
-Y'bneth,2,2,100,"Raz,Kaine",1,0,0,"Sinestrea,Lorion,Enzo",1,0,0
-Mina,2,1,50,"Raz,Maloch",1,0,0,"Sinestrea,Lorion,Toro",1,0,0
-Grakk,2,2,100,"Raz,Rouie",1,0,0,"Sinestrea,Mganga,Maloch",1,1,100
-Cresht,2,2,100,"Raz,TeeMee",1,1,100,"Sinestrea,Mganga,Mina",1,1,100
-Toro,1,1,100,"Raz,Thane",1,1,100,"Sinestrea,Rouie,Omega",1,1,100
-Taara,1,0,0,"Raz,Toro",1,0,0,"Sinestrea,Tulen,Omega",1,1,100
-Mina,1,1,100,"Rouie,Omega",1,0,0,"Tachi,Annette,Thane",1,0,0
-Kil'Groth,1,1,100,"Rouie,TeeMee",1,1,100,"Tachi,Annette,Y'bneth",1,1,100
-Murad,1,0,0,"Rouie,Thane",1,1,100,"Tachi,Goverra,TeeMee",1,1,100
-Fennik,1,0,0,"Tulen,Cresht",1,1,100,"Tachi,Heino,Enzo",1,0,0
-Bolt Barron,1,1,100,"Tulen,Omega",1,1,100,"Tachi,Heino,Grakk",1,1,100
-Aya,1,0,0,"Yue,Kaine",1,1,100,"Tachi,Heino,Omega",1,1,100
-Wiro,1,0,0,"Yue,Toro",1,1,100,"Tachi,Iggy,Heino",1,1,100
-Tachi,1,1,100,,,,,"Tachi,Liliana,Heino",1,1,100
-Krizzix,1,0,0,,,,,"Tachi,Liliana,TeeMee",1,1,100
+Raz,13,6,46,"Mganga,Heino",2,1,50,"Aoi,Rouie,Thane",1,1,100
+Skud,13,7,54,"Mganga,Kaine",2,2,100,"Billow,Goverra,Enzo",1,0,0
+Annette,12,8,67,"Raz,Enzo",2,2,100,"Billow,Goverra,Maloch",1,0,0
+Mganga,12,8,67,"Rouie,Enzo",2,2,100,"Billow,Goverra,Toro",1,1,100
+Valhein,12,8,67,"Annette,Maloch",1,1,100,"Billow,Ignis,Heino",1,0,0
+Qi,11,7,64,"Annette,Thane",1,0,0,"Billow,Lorion,Enzo",1,0,0
+TeeMee,11,7,64,"Annette,Toro",1,0,0,"Billow,Mganga,Ming",1,1,100
+Biron,10,5,50,"Annette,Y'bneth",1,1,100,"Billow,Mganga,Tachi",1,1,100
+Florentino,10,6,60,"Goverra,TeeMee",1,1,100,"Billow,Raz,Toro",1,0,0
+Heino,10,6,60,"Goverra,Toro",1,1,100,"Billow,Yue,Toro",1,1,100
+Sinestrea,10,8,80,"Goverra,Y'bneth",1,0,0,"Bolt Barron,Annette Kaine",1,1,100
+Billow,9,4,44,"Heino,Grakk",1,1,100,"Bolt Barron,Goverra,Toro",1,0,0
+Riktor,9,4,44,"Heino,Omega",1,1,100,"Bolt Barron,Iggy,Toro",1,0,0
+Rouie,9,5,56,"Heino,TeeMee",1,1,100,"Bolt Barron,Mganga,Annette",1,1,100
+Aoi,8,4,50,"Iggy,Enzo",1,1,100,"Bolt Barron,Raz,Enzo",1,1,100
+Bolt Barron,8,6,75,"Iggy,Heino",1,1,100,"Eland'orr,Ignis,Toro",1,0,0
+Goverra,8,4,50,"Iggy,TeeMee",1,1,100,"Eland'orr,Liliana,Toro",1,0,0
+Eland'orr,7,3,43,"Iggy,Toro",1,1,100,"Enzo,Lorion,Annette",1,1,100
+Iggy,7,4,57,"Ignis,Heino",1,1,100,"Enzo,Lorion,Ming",1,1,100
+Kaine,7,5,71,"Ignis,Maloch",1,0,0,"Enzo,Mganga,Heino",1,0,0
+Liliana,7,4,57,"Ignis,TeeMee",1,1,100,"Enzo,Mganga,Rouie",1,0,0
+Ignis,6,3,50,"Ignis,Toro",1,0,0,"Enzo,Raz,Grakk",1,1,100
+Ryoma,6,4,67,"Liliana,Enzo",1,0,0,"Fennik,Heino,Enzo",1,0,0
+Zephys,6,3,50,"Liliana,Heino",1,1,100,"Keera,Goverra,Enzo",1,0,0
+Fennik,5,2,40,"Liliana,Krizzix",1,1,100,"Keera,Goverra,Y'bneth",1,1,100
+Wisp,5,3,60,"Liliana,Maloch",1,0,0,"Keera,Ignis,Maloch",1,0,0
+Nakroth,4,2,50,"Liliana,Rouie",1,0,0,"Keera,Ignis,Toro",1,1,100
+Thane,4,2,50,"Liliana,TeeMee",1,1,100,"Keera,Liliana,Enzo",1,1,100
+Yena,4,0,0,"Liliana,Toro",1,1,100,"Keera,Liliana,Krizzix",1,0,0
+Mina,3,2,67,"Lorion,Mina",1,0,0,"Keera,Lorion,Annette",1,1,100
+Ming,3,2,67,"Lorion,Ming",1,0,0,"Keera,Lorion,Kaine",1,1,100
+Murad,3,2,67,"Lorion,Rouie",1,1,100,"Keera,Mganga,Annette",1,1,100
+Natalya,3,0,0,"Lorion,TeeMee",1,0,0,"Keera,Natalya,Wiro",1,0,0
+Omega,3,3,100,"Lorion,Toro",1,1,100,"Keera,Raz,Thane",1,0,0
+Cresht,2,2,100,"Mganga,Maloch",1,1,100,"Keera,Yue,Kaine",1,1,100
+Grakk,2,2,100,"Mganga,Mina",1,0,0,"Marja,Goverra,Toro",1,1,100
+Tulen,2,2,100,"Mganga,Ming",1,1,100,"Marja,Lorion,Enzo",1,1,100
+Violet,2,1,50,"Mganga,Rouie",1,1,100,"Marja,Raz,TeeMee",1,0,0
+Y'bneth,2,2,100,"Mganga,Tachi",1,0,0,"Marja,Rouie,Thane",1,1,100
+Yue,2,2,100,"Natalya,Maloch",1,0,0,"Murad,Lorion,Toro",1,0,0
+Aya,1,0,0,"Natalya,TeeMee",1,0,0,"Nakroth,Liliana,Rouie",1,1,100
+Kil'Groth,1,1,100,"Natalya,Wiro",1,0,0,"Nakroth,Raz,TeeMee",1,1,100
+Krizzix,1,0,0,"Raz,Grakk",1,0,0,"Sinestrea,Heino,TeeMee",1,1,100
+Taara,1,0,0,"Raz,Heino",1,0,0,"Sinestrea,Iggy,Cresht",1,1,100
+Wiro,1,0,0,"Raz,Kaine",1,0,0,"Sinestrea,Lorion,Enzo",1,0,0
+,,,,"Raz,Maloch",1,0,0,"Sinestrea,Lorion,Toro",1,0,0
+,,,,"Raz,Rouie",1,0,0,"Sinestrea,Mganga,Maloch",1,1,100
+,,,,"Raz,TeeMee",1,1,100,"Sinestrea,Mganga,Mina",1,1,100
+,,,,"Raz,Thane",1,1,100,"Sinestrea,Rouie,Omega",1,1,100
+,,,,"Raz,Toro",1,0,0,"Sinestrea,Tulen,Omega",1,1,100
+,,,,"Rouie,Omega",1,0,0,"Tachi,Annette,Thane",1,0,0
+,,,,"Rouie,TeeMee",1,1,100,"Tachi,Annette,Y'bneth",1,1,100
+,,,,"Rouie,Thane",1,1,100,"Tachi,Goverra,TeeMee",1,1,100
+,,,,"Tulen,Cresht",1,1,100,"Tachi,Heino,Enzo",1,0,0
+,,,,"Tulen,Omega",1,1,100,"Tachi,Heino,Grakk",1,1,100
+,,,,"Yue,Kaine",1,1,100,"Tachi,Heino,Omega",1,1,100
+,,,,"Yue,Toro",1,1,100,"Tachi,Iggy,Heino",1,1,100
+,,,,,,,,"Tachi,Liliana,Heino",1,1,100
+,,,,,,,,"Tachi,Liliana,TeeMee",1,1,100
 ,,,,,,,,"Tachi,Lorion,Annette",1,1,100
 ,,,,,,,,"Tachi,Lorion,Mina",1,0,0
 ,,,,,,,,"Tachi,Lorion,TeeMee",1,0,0
