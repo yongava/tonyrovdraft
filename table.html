@@ -335,7 +335,7 @@
                 createTable(data, ['2-Combination', '2-Total Picks', '2-Wins', '2-Win Rate'], 'table-2');
 
                 // Table 3
-                createTable(data, ['3-Combination', '3-Total Picks', '3-Wins', '3-Win Rate'], 'table-3');
+                createTable(data, ['OP-Combination', 'OP-Total Picks', 'OP-Wins', 'OP-Win Rate'], 'table-3');
 
                 // Table 4
                 // createTable(data, ['4-Combination', '4-Total Picks', '4-Wins', '4-Win Rate'], 'table-4');
@@ -409,7 +409,7 @@
                         });
                         tbody.appendChild(tr); // Append the row only if it matches the filter
                     } else if (!isHeroSelectable) {
-                        // If it's not the 1-Combination table (e.g., 2-Combination or 3-Combination), display all rows
+                        // If it's not the 1-Combination table (e.g., 2-Combination or OP-Combination), display all rows
                         const tr = document.createElement('tr');
                         columns.forEach(header => {
                             const td = document.createElement('td');
@@ -461,12 +461,12 @@
             function filterTables() {
                 loadAndCacheHeroPool(function (data) {
                     const filteredData2 = filterData(data, '2-Combination');
-                    const filteredData3 = filterData(data, '3-Combination');
+                    const filteredData3 = filterData(data, 'OP-Combination');
                     const filteredData4 = filterData(data, '4-Combination');
 
                     // Recreate the tables with filtered data
                     createTable(filteredData2, ['2-Combination', '2-Total Picks', '2-Wins', '2-Win Rate'], 'table-2');
-                    createTable(filteredData3, ['3-Combination', '3-Total Picks', '3-Wins', '3-Win Rate'], 'table-3');
+                    createTable(filteredData3, ['OP-Combination', 'OP-Total Picks', 'OP-Wins', 'OP-Win Rate'], 'table-3');
                     // createTable(filteredData4, ['4-Combination', '4-Total Picks', '4-Wins', '4-Win Rate'], 'table-4');
                 });
             }
