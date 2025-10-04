@@ -1,56 +1,63 @@
 1-Combination,1-Total Picks,1-Wins,1-Win Rate,2-Combination,2-Total Picks,2-Wins,2-Win Rate,OP-Combination,OP-Total Picks,OP-Wins,OP-Win Rate
-Toro,8,5,63,"Annette,TeeMee",2,2,100,"Liliana,Toro",3,2,67
-Annette,7,6,86,"Goverra,TeeMee",2,1,50,"Goverra,Maloch",2,1,50
-Elsu,7,6,86,"Annette,Enzo",1,0,0,"Ignis,Maloch",2,0,0
-Marja,7,4,57,"Annette,Omega",1,1,100,"Lorion,Enzo",2,2,100
-Tachi,7,5,71,"Annette,Toro",1,1,100,"Lorion,Y'bneth",2,1,50
-TeeMee,7,5,71,"Goverra,Baldum",1,0,0,"Mganga,Rouie",2,2,100
-Ata,6,3,50,"Goverra,Dolia",1,0,0,"Mganga,Y'bneth",2,2,100
-Wisp,6,4,67,"Goverra,Rouie",1,0,0,"Raz,Rouie",2,0,0
-Goverra,5,1,20,"Heino,TeeMee",1,0,0,"Raz,TeeMee",2,2,100
-Iggy,5,3,60,"Iggy,Aleister",1,1,100,"Rouie,Thane",2,1,50
-Lorion,5,2,40,"Iggy,Alice",1,1,100,"Bonnie,Thane",1,0,0
-Ryoma,5,4,80,"Iggy,Dolia",1,1,100,"Diaochan,Toro",1,0,0
-Airi,4,1,25,"Iggy,Helen",1,0,0,"Goverra,Arduin",1,0,0
-Capheny,4,2,50,"Iggy,Toro",1,0,0,"Goverra,Enzo",1,1,100
-Dolia,4,1,25,"Ignis,Alice",1,1,100,"Goverra,Heino",1,0,0
-Rouie,4,2,50,"Ignis,Rouie",1,1,100,"Goverra,Helen",1,1,100
-Stuart,4,2,50,"Liliana,Annette",1,1,100,"Goverra,Omen",1,0,0
-Valhein,4,2,50,"Liliana,Dolia",1,0,0,"Goverra,Toro",1,0,0
-Alice,3,2,67,"Liliana,TeeMee",1,1,100,"Heino,Helen",1,1,100
-Arduin,3,1,33,"Lorion,Alice",1,0,0,"Heino,TeeMee",1,1,100
-Billow,3,1,33,"Lorion,Ming",1,1,100,"Heino,Toro",1,0,0
-Hayate,3,1,33,"Lorion,TeeMee",1,1,100,"Heino,Y'bneth",1,1,100
-Liliana,3,2,67,"Lorion,Y'Bneth",1,0,0,"Heino,Zip",1,0,0
-Maloch,3,1,33,"Maloch,Dolia",1,0,0,"Ignis,TeeMee",1,1,100
-Zephys,3,3,100,"Mganga,Annette",1,1,100,"Ignis,Toro",1,0,0
-Aoi,2,1,50,"Mganga,Rouie",1,0,0,"Kahli,Maloch",1,1,100
-Eland'orr,2,0,0,"Raz,Arduin",1,0,0,"Kahli,Toro",1,0,0
-Ignis,2,2,100,"Raz,Kaine",1,1,100,"Liliana,Dolia",1,0,0
-Keera,2,1,50,"Rouie,Chaugnar",1,1,100,"Liliana,Enzo",1,1,100
-Mganga,2,1,50,"Zata,Lumburr",1,0,0,"Liliana,Omega",1,0,0
-Mina,2,1,50,,,,,"Liliana,TeeMee",1,0,0
-Qi,2,2,100,,,,,"Liliana,Y'bneth",1,0,0
-Raz,2,1,50,,,,,"Lorion,D'arcy",1,0,0
-Sinestrea,2,0,0,,,,,"Lorion,TeeMee",1,0,0
-Yena,2,1,50,,,,,"Lorion,Toro",1,1,100
-Aleister,1,1,100,,,,,"Mganga,Annette",1,0,0
-Baldum,1,0,0,,,,,"Mganga,Thane",1,1,100
-Biron,1,0,0,,,,,"Mganga,Toro",1,1,100
-Bolt Barron,1,0,0,,,,,"Natalya,Enzo",1,0,0
-Chaugnar,1,1,100,,,,,"Raz,Heino",1,1,100
-Enzo,1,0,0,,,,,"Raz,Helen",1,1,100
-Fennik,1,0,0,,,,,"Raz,Zip",1,1,100
-Florentino,1,1,100,,,,,"Rouie,Cresht",1,0,0
-Heino,1,0,0,,,,,"Rouie,Enzo",1,1,100
-Helen,1,0,0,,,,,"Rouie,Veres",1,1,100
-Kaine,1,1,100,,,,,"Rouie,Y;bneth",1,1,100
-Lumburr,1,0,0,,,,,"Zata,Thane",1,1,100
-Ming,1,1,100,,,,,"Zuka,Y'bneth",1,0,0
-Omega,1,1,100,,,,,,,,
+Toro,16,7,44,Mganga Rouie,4,1,25,Raz TeeMee,6,4,67
+Annette,14,7,50,Annette TeeMee,3,2,67,Mganga TeeMee,2,2,100
+Tachi,14,6,43,Annette Omega,2,1,50,Mganga Grakk,2,1,50
+Elsu,13,7,54,Goverra Rouie,2,0,0,Mganga Toro,1,1,100
+Ata,12,4,33,Goverra TeeMee,2,1,50,Mganga Thane,1,1,100
+Marja,12,5,42,Iggy Alice,2,1,50,Mganga Mina,1,1,100
+TeeMee,12,6,50,Iggy Dolia,2,2,100,Mganga Kaine,1,0,0
+Wisp,12,5,42,Liliana Dolia,2,0,0,Mganga Enzo,1,1,100
+Dolia,11,3,27,Lorion TeeMee,2,2,100,Mganga Cresht,1,1,100
+Capheny,10,3,30,Maloch Dolia,2,0,0,Rouie Y'bneth,1,1,100
+Stuart,10,4,40,Natalya Dolia,2,0,0,Rouie Wiro,1,1,100
+Airi,9,2,22,Aleister Enzo,1,0,0,Rouie Toro,1,0,0
+Rouie,9,3,33,"Annette,Enzo",1,0,0,Rouie Krizzix,1,1,100
+Ryoma,9,6,67,"Annette,Ishar",1,0,0,Rouie Enzo,1,1,100
+Iggy,8,4,50,"Annette,Maloch",1,1,100,Lorion Y'bneth,1,1,100
+Valhein,8,5,63,"Annette,Toro",1,1,100,Lorion Thane,1,1,100
+Mganga,7,3,43,Annette Y'bneth,1,0,0,Lorion Mina,1,1,100
+Raz,7,3,43,Goverra Baldum,1,0,0,Lorion Dolia,1,1,100
+Billow,6,1,17,Goverra Dolia,1,0,0,Liliana Toro,1,1,100
+Goverra,6,1,17,Heino Omega,1,0,0,Liliana Thane,1,1,100
+Ignis,6,3,50,Heino TeeMee,1,0,0,Liliana Ming,1,1,100
+Lorion,6,3,50,Iggy Aleister,1,1,100,Ignis Y'bneth,1,1,100
+Maloch,6,3,50,Iggy Helen,1,0,0,Ignis Rouie,1,1,100
+Sinestrea,6,1,17,Iggy TeeMee,1,0,0,Ignis Alice,1,0,0
+Zephys,6,5,83,Iggy Toro,1,0,0,Goverra Kaine,1,1,100
+Mina,5,2,40,Ignis Alice,1,1,100,Goverra Helen,1,1,100
+Alice,4,2,50,Ignis Annette,1,0,0,Goverra Dolia,1,0,0
+Arduin,4,1,25,Ignis Maloch,1,1,100,Ishar Grakk,1,1,100
+Fennik,4,2,50,Ignis Rouie,1,1,100,Ishar Enzo,1,0,0
+Hayate,4,1,25,Ignis TeeMee,1,0,0,Iggy Toro,1,1,100
+Liliana,4,2,50,Ignis Toro,1,0,0,Iggy TeeMee,1,1,100
+Qi,4,2,50,Liliana Annette,1,1,100,Annette Wiro,1,0,0
+Yena,4,2,50,Liliana TeeMee,1,1,100,Annette kaine,1,0,0
+Aoi,3,1,33,Lorion Alice,1,0,0,Tulen Xeniel,1,1,100
+Biron,3,0,0,Lorion Ming,1,1,100,Natalya Thane,1,0,0
+Eland'orr,3,1,33,Lorion Y'bneth,1,0,0,Krixi Krizzix,1,1,100
+Enzo,3,1,33,Mganga Annette,1,1,100,Heino TeeMee,1,1,100
+Florentino,3,3,100,Mganga Enzo,1,1,100,Aya Toro,1,1,100
+Keera,3,1,33,Mganga Xeniel,1,0,0,,,,
+Natalya,3,0,0,Natalya Rouie,1,0,0,,,,
+Omega,3,1,33,Raz Annette,1,0,0,,,,
+Y'bneth,3,1,33,Raz Arduin,1,0,0,,,,
+Aleister,2,1,50,Raz Dolia,1,0,0,,,,
+Heino,2,0,0,Raz Kaine,1,1,100,,,,
+Riktor,2,0,0,Raz TeeMee,1,0,0,,,,
+Violet,2,1,50,Raz Toro,1,1,100,,,,
+Zata,2,1,50,Raz Y'bneth,1,1,100,,,,
+Baldum,1,0,0,Rouie Chaugnar,1,1,100,,,,
+Bolt Barron,1,0,0,Zata Dolia,1,1,100,,,,
+Chaugnar,1,1,100,Zata Lumburr,1,0,0,,,,
+Helen,1,0,0,,,,,,,,
+Ishar,1,0,0,,,,,,,,
+Kaine,1,1,100,,,,,,,,
+Lumburr,1,0,0,,,,,,,,
+Ming,1,1,100,,,,,,,,
+Nakroth,1,1,100,,,,,,,,
+Omen,1,0,0,,,,,,,,
 Skud,1,0,0,,,,,,,,
+Slimz,1,0,0,,,,,,,,
 Tulen,1,0,0,,,,,,,,
-Violet,1,0,0,,,,,,,,
-Y'bneth,1,0,0,,,,,,,,
-Zata,1,0,0,,,,,,,,
+Xeniel,1,0,0,,,,,,,,
 Zill,1,0,0,,,,,,,,
