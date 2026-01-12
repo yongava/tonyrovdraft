@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FPT Counter Pick Training</title>
+    <style>
+        /* --- Styles: Dark Gaming Theme --- */
+        :root {
+            --bg-core: #0f0f13;
+            --bg-card: #1a1a20;
+            --primary: #ffd700; /* Gold */
+            --accent: #00d2d3; /* Cyan */
+            --danger: #ff6b6b;
+            --text-main: #e0e0e0;
+        }
+
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg-core); color: var(--text-main); margin: 0; padding: 20px; display: flex; justify-content: center; min-height: 100vh; }
+        
+        .game-container {
+            width: 100%; max-width: 500px;
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid #333;
+            text-align: center;
+            position: relative;
+        }
+
+        /* Player Name Input */
+        .player-section { margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 15px; }
+        .input-text {
+            width: 80%; padding: 10px; border-radius: 8px; border: 1px solid #444;
+            background: #2a2a30; color: white; font-size: 1rem; text-align: center;
+        }
+
+        /* Hero Image Card */
+        .hero-card {
+            background: #25252b; border-radius: 12px; padding: 15px; margin-bottom: 20px;
+            border: 1px solid #444; position: relative; overflow: hidden;
+        }
+        .hero-img {
+            width: 150px; height: 150px; object-fit: cover; border-radius: 50%;
+            border: 4px solid var(--primary); box-shadow: 0 0 15px var(--primary);
+            margin-bottom: 10px; background-color: #000;
+        }
+        .hero-name { font-size: 1.8rem; font-weight: bold; color: var(--primary); margin: 5px 0; text-transform: uppercase; }
+        .hero-type { font-size: 0.9rem; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Counter Inputs */
+        .counter-section { margin-bottom: 25px; }
+        .counter-label { display: block; margin-bottom: 10px; color: var(--accent); font-weight: bold; }
+        .counter-input-group { display: flex; flex-direction: column; gap: 10px; }
+        .counter-input {
+            padding: 12px; border-radius: 8px; border: 1px solid #444;
+            background: #2a2a30; color: white; width: 90%; margin: 0 auto;
+        }
+
+        /* Buttons */
+        .btn-group { display: flex; gap: 10px; justify-content: center; }
+        .btn {
+            padding: 12px 25px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer;
+            text-transform: uppercase; flex: 1; transition: 0.2s;
+        }
+        .btn-submit { background-color: var(--primary); color: #000; }
+        .btn-submit:hover { background-color: #ffc107; transform: scale(1.02); }
+        .btn-submit:disabled { background-color: #555; cursor: not-allowed; }
+        
+        .btn-skip { background-color: #444; color: #ccc; }
+        .btn-skip:hover { background-color: #555; }
+        
+        /* Progress Bar */
+        .progress-container { height: 6px; background: #333; border-radius: 3px; margin-top: 20px; overflow: hidden; }
+        .progress-bar { height: 100%; background: var(--accent); width: 0%; transition: width 0.3s; }
+        .progress-text { font-size: 0.8rem; color: #666; margin-top: 5px; }
+
+        /* Status Toast */
+        .status-msg { font-size: 0.8em; margin-top: 10px; height: 20px; color: var(--accent); opacity: 0; transition: opacity 0.5s; }
+
+    </style>
+</head>
+<body>
+
+    <div class="game-container">
+        
+        <div class="player-section">
+            <label style="color:#888; font-size:0.8rem;">PLAYER / ANALYST NAME</label><br>
+            <input type="text" id="playerName" class="input-text" placeholder="Enter your name (e.g. Tony)" required>
+        </div>
+
+        <div id="game-area">
+            <div class="hero-card">
+                <img id="heroImg" class="hero-img" src="https://via.placeholder.com/150?text=NO+IMAGE" onerror="this.src='https://via.placeholder.com/150?text=No+Img'">
+                <h2 id="heroName" class="hero-name">-</h2>
+                <div id="heroType" class="hero-type">-</div>
+            </div>
+
+            <div class="counter-section">
+                <span class="counter-label">🛡️ PICK 3 COUNTERS</span>
+                <div class="counter-input-group">
+                    <input list="heroes-list" id="counter1" class="counter-input" placeholder="Counter Hero #1">
+                    <input list="heroes-list" id="counter2" class="counter-input" placeholder="Counter Hero #2">
+                    <input list="heroes-list" id="counter3" class="counter-input" placeholder="Counter Hero #3">
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-skip" id="btnSkip" onclick="skipHero()">Skip ⏭️</button>
+                <button class="btn btn-submit" id="btnSubmit" onclick="submitVote()">Submit ✅</button>
+            </div>
+            
+            <div id="statusMsg" class="status-msg">Sending data...</div>
+        </div>
+
+        <div id="finish-area" style="display:none; text-align: center; padding: 20px;">
+            <h2 style="color:var(--success)">🎉 MISSION COMPLETE!</h2>
+            <p>All data has been sent to the database.</p>
+            <button class="btn btn-skip" onclick="location.reload()">Play Again</button>
+        </div>
+
+        <div class="progress-container">
+            <div id="progressBar" class="progress-bar"></div>
+        </div>
+        <div id="progressText" class="progress-text">0 / 0</div>
+
+    </div>
+
+    <datalist id="heroes-list"></datalist>
+
+    <script>
+        // ==========================================
+        // 1. ตั้งค่า GOOGLE FORM (ต้องแก้ไขตรงนี้!)
+        // ==========================================
+        const FORM_CONFIG = {
+            // URL ของฟอร์ม (ต้องลงท้ายด้วย formResponse)
+            // ตัวอย่าง: https://docs.google.com/forms/u/0/d/e/XXXXXX/formResponse
+            formURL: "LINK_GOOGLE_FORM_RESPONSE_ของ_คุณ", 
+            
+            // ใส่เลข Entry ID ที่ได้จาก Pre-filled link
+            entryIDs: {
+                player: "entry.11111111",      // ช่อง Player Name
+                targetHero: "entry.22222222",  // ช่อง Target Hero
+                targetType: "entry.33333333",  // ช่อง Target Type
+                c1: "entry.44444444",          // ช่อง Counter 1
+                c2: "entry.55555555",          // ช่อง Counter 2
+                c3: "entry.66666666"           // ช่อง Counter 3
+            }
+        };
+
+        // ==========================================
+        // 2. ข้อมูล HERO (DATABASE)
+        // ==========================================
+        const heroDatabase = [
+            { name: "Florentino", type: "Warrior" },
+            { name: "Nakroth", type: "Assassin" },
+            { name: "Liliana", type: "Mage" },
+            { name: "Yena", type: "Warrior" },
+            { name: "Elsu", type: "Marksman" },
+            { name: "Zip", type: "Support" },
+            { name: "Yan", type: "Warrior" },
+            // เพิ่มฮีโร่ต่อได้ที่นี่...
+        ];
+        
+        const IMAGE_PATH = "hero_images/"; 
+        const IMAGE_EXT = ".jpg"; 
+
+        // ==========================================
+        // 3. ระบบเกม (Game Logic)
+        // ==========================================
+        let currentIndex = 0;
+        
+        window.onload = function() {
+            populateDatalist();
+            renderHero();
+        }
+
+        function populateDatalist() {
+            const dataList = document.getElementById('heroes-list');
+            heroDatabase.forEach(h => {
+                let option = document.createElement('option');
+                option.value = h.name;
+                dataList.appendChild(option);
+            });
+        }
+
+        function formatImageName(name) {
+            return name.toLowerCase().replace(/[^a-z0-9]/g, "");
+        }
+
+        function renderHero() {
+            if (currentIndex >= heroDatabase.length) {
+                finishGame();
+                return;
+            }
+
+            const hero = heroDatabase[currentIndex];
+            document.getElementById('heroName').innerText = hero.name;
+            document.getElementById('heroType').innerText = hero.type;
+            const imgName = formatImageName(hero.name); 
+            document.getElementById('heroImg').src = `${IMAGE_PATH}${imgName}${IMAGE_EXT}`;
+
+            // Reset Fields
+            document.getElementById('counter1').value = "";
+            document.getElementById('counter2').value = "";
+            document.getElementById('counter3').value = "";
+            
+            updateProgress();
+        }
+
+        // ==========================================
+        // 4. ส่งข้อมูลเข้า Google Form (REALTIME)
+        // ==========================================
+        function submitVote() {
+            const player = document.getElementById('playerName').value.trim();
+            if (!player) {
+                alert("Please enter your name!");
+                document.getElementById('playerName').focus();
+                return;
+            }
+
+            // Lock buttons
+            const btnSubmit = document.getElementById('btnSubmit');
+            const btnSkip = document.getElementById('btnSkip');
+            const statusMsg = document.getElementById('statusMsg');
+            
+            btnSubmit.disabled = true;
+            btnSkip.disabled = true;
+            btnSubmit.innerText = "Sending...";
+            statusMsg.style.opacity = 1;
+
+            // Prepare Data
+            const target = heroDatabase[currentIndex];
+            const c1 = document.getElementById('counter1').value;
+            const c2 = document.getElementById('counter2').value;
+            const c3 = document.getElementById('counter3').value;
+
+            // Construct Form Data
+            const formData = new FormData();
+            formData.append(FORM_CONFIG.entryIDs.player, player);
+            formData.append(FORM_CONFIG.entryIDs.targetHero, target.name);
+            formData.append(FORM_CONFIG.entryIDs.targetType, target.type);
+            formData.append(FORM_CONFIG.entryIDs.c1, c1);
+            formData.append(FORM_CONFIG.entryIDs.c2, c2);
+            formData.append(FORM_CONFIG.entryIDs.c3, c3);
+
+            // Send POST Request (No-CORS Mode)
+            fetch(FORM_CONFIG.formURL, {
+                method: "POST",
+                mode: "no-cors",
+                body: formData
+            }).then(() => {
+                // Success (Simulated)
+                console.log("Data sent for " + target.name);
+                setTimeout(() => {
+                    nextTurn();
+                }, 500); 
+            }).catch(err => {
+                console.error("Error sending data", err);
+                alert("Connection Error! Data might not be saved.");
+                btnSubmit.disabled = false;
+                btnSkip.disabled = false;
+                btnSubmit.innerText = "Submit ✅";
+            });
+        }
+
+        function nextTurn() {
+            const btnSubmit = document.getElementById('btnSubmit');
+            const btnSkip = document.getElementById('btnSkip');
+            const statusMsg = document.getElementById('statusMsg');
+
+            btnSubmit.disabled = false;
+            btnSkip.disabled = false;
+            btnSubmit.innerText = "Submit ✅";
+            statusMsg.style.opacity = 0;
+
+            currentIndex++;
+            renderHero();
+        }
+
+        function skipHero() {
+            // ไม่ส่งข้อมูลอะไร แค่ข้ามไป
+            nextTurn();
+        }
+
+        function updateProgress() {
+            const pct = Math.round((currentIndex / heroDatabase.length) * 100);
+            document.getElementById('progressBar').style.width = pct + "%";
+            document.getElementById('progressText').innerText = `${currentIndex + 1} / ${heroDatabase.length}`;
+        }
+
+        function finishGame() {
+            document.getElementById('game-area').style.display = 'none';
+            document.getElementById('finish-area').style.display = 'block';
+            document.getElementById('progressBar').style.width = "100%";
+            document.getElementById('progressText').innerText = "All Done!";
+        }
+    </script>
+
+</body>
+</html>
