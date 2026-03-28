@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Super Nova - Synergy Map & Win Rate</title>
+    <title>Box Gaming - Synergy Map & Interactive Stats</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
     <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <style>
@@ -76,6 +76,7 @@
             width: 95%;
             max-width: 1200px;
             justify-content: center;
+            align-items: flex-start;
         }
 
         .table-section {
@@ -106,6 +107,7 @@
         th, td {
             padding: 12px 10px;
             border-bottom: 1px solid rgba(255,255,255,0.05);
+            vertical-align: middle;
         }
         th {
             color: #94a3b8;
@@ -122,6 +124,13 @@
             border-bottom: none;
         }
         
+        .hero-cell {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 15px;
+            padding-left: 15px;
+        }
         .hero-img-small {
             width: 42px;
             height: 42px;
@@ -142,7 +151,6 @@
             gap: 15px;
         }
 
-        /* ตกแต่งตัวเลขและการแสดง Win Rate */
         .stats-cell {
             display: flex;
             flex-direction: column;
@@ -164,18 +172,34 @@
         }
         .wr-good {
             background-color: rgba(16, 185, 129, 0.2);
-            color: #34d399; /* สีเขียว */
+            color: #34d399; 
             border: 1px solid rgba(52, 211, 153, 0.3);
         }
         .wr-bad {
             background-color: rgba(239, 68, 68, 0.2);
-            color: #f87171; /* สีแดง */
+            color: #f87171; 
             border: 1px solid rgba(248, 113, 113, 0.3);
         }
         .plus-icon {
             color: #64748b;
             font-weight: 800;
             font-size: 1.2rem;
+        }
+
+        .btn-delete {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 6px;
+            padding: 6px 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .btn-delete:hover {
+            background-color: #ef4444;
+            color: #ffffff;
+            box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
         }
 
         div.vis-tooltip {
@@ -193,7 +217,7 @@
 </head>
 <body>
 
-    <h1>SUPER NOVA : SYNERGY MAP</h1>
+    <h1>BOX GAMING : SYNERGY MAP</h1>
     
     <div class="legend">
         <div class="legend-item"><span class="color-box" style="background: #3b82f6;"></span> DSL</div>
@@ -212,8 +236,9 @@
             <table>
                 <thead>
                     <tr>
-                        <th style="width: 50%;">Hero</th>
-                        <th style="width: 50%;">Stats</th>
+                        <th style="width: 45%; text-align: left; padding-left: 30px;">Hero</th>
+                        <th style="width: 35%;">Stats</th>
+                        <th style="width: 20%;">Action</th>
                     </tr>
                 </thead>
                 <tbody id="hero-table-body">
@@ -244,43 +269,40 @@
         const colorADL = { role: 'ADL', background: '#ef4444', border: '#f87171', highlight: {border: '#fca5a5', background: '#dc2626'}};
         const colorSUP = { role: 'SUP', background: '#10b981', border: '#34d399', highlight: {border: '#6ee7b7', background: '#059669'}};
 
-        // ข้อมูลดิบของฮีโร่ พร้อมอัตรา Win Rate ที่คำนวณแล้ว
+        // ข้อมูลดิบของฮีโร่ Box Gaming
         let rawNodes = [
-            { id: "Wisp", label: "6", title: "Wisp (6 Picks, 0% WR)", value: 6, winRate: 0.0, color: colorADL },
-            { id: "Qi", label: "5", title: "Qi (5 Picks, 0% WR)", value: 5, winRate: 0.0, color: colorDSL },
-            { id: "Tachi", label: "5", title: "Tachi (5 Picks, 40% WR)", value: 5, winRate: 40.0, color: colorJUG },
-            { id: "Toro", label: "5", title: "Toro (5 Picks, 0% WR)", value: 5, winRate: 0.0, color: colorSUP },
-            { id: "Valhein", label: "5", title: "Valhein (5 Picks, 20% WR)", value: 5, winRate: 20.0, color: colorADL },
-            { id: "Dolia", label: "4", title: "Dolia (4 Picks, 0% WR)", value: 4, winRate: 0.0, color: colorSUP },
-            { id: "Keera", label: "4", title: "Keera (4 Picks, 0% WR)", value: 4, winRate: 0.0, color: colorJUG },
-            { id: "Lorion", label: "4", title: "Lorion (4 Picks, 0% WR)", value: 4, winRate: 0.0, color: colorMID },
-            { id: "Skud", label: "4", title: "Skud (4 Picks, 25% WR)", value: 4, winRate: 25.0, color: colorDSL },
-            { id: "Y'bneth", label: "4", title: "Y'bneth (4 Picks, 25% WR)", value: 4, winRate: 25.0, color: colorSUP },
+            { id: "Hayate", label: "7", title: "Hayate (7 Picks, 57% WR)", value: 7, winRate: 57.1, color: colorADL },
+            { id: "Keera", label: "7", title: "Keera (7 Picks, 43% WR)", value: 7, winRate: 42.9, color: colorJUG },
+            { id: "Toro", label: "7", title: "Toro (7 Picks, 57% WR)", value: 7, winRate: 57.1, color: colorSUP },
+            { id: "Airi", label: "6", title: "Airi (6 Picks, 83% WR)", value: 6, winRate: 83.3, color: colorDSL },
+            { id: "Fennik", label: "6", title: "Fennik (6 Picks, 83% WR)", value: 6, winRate: 83.3, color: colorADL },
+            { id: "Marja", label: "6", title: "Marja (6 Picks, 33% WR)", value: 6, winRate: 33.3, color: colorDSL },
+            { id: "Yena", label: "6", title: "Yena (6 Picks, 67% WR)", value: 6, winRate: 66.7, color: colorDSL },
+            { id: "Dolia", label: "5", title: "Dolia (5 Picks, 40% WR)", value: 5, winRate: 40.0, color: colorSUP },
+            { id: "Eland'orr", label: "5", title: "Eland'orr (5 Picks, 40% WR)", value: 5, winRate: 40.0, color: colorJUG },
+            { id: "Stuart", label: "5", title: "Stuart (5 Picks, 80% WR)", value: 5, winRate: 80.0, color: colorADL },
+            { id: "Tachi", label: "5", title: "Tachi (5 Picks, 80% WR)", value: 5, winRate: 80.0, color: colorJUG },
+            { id: "TeeMee", label: "5", title: "TeeMee (5 Picks, 80% WR)", value: 5, winRate: 80.0, color: colorSUP },
+            { id: "Y'bneth", label: "5", title: "Y'bneth (5 Picks, 40% WR)", value: 5, winRate: 40.0, color: colorSUP },
+            { id: "Annette", label: "4", title: "Annette (4 Picks, 100% WR)", value: 4, winRate: 100.0, color: colorMID },
+            { id: "Billow", label: "4", title: "Billow (4 Picks, 50% WR)", value: 4, winRate: 50.0, color: colorJUG },
+            { id: "Capheny", label: "4", title: "Capheny (4 Picks, 50% WR)", value: 4, winRate: 50.0, color: colorADL },
+            { id: "Lorion", label: "4", title: "Lorion (4 Picks, 75% WR)", value: 4, winRate: 75.0, color: colorMID },
             { id: "Zata", label: "4", title: "Zata (4 Picks, 25% WR)", value: 4, winRate: 25.0, color: colorMID },
-            { id: "Airi", label: "3", title: "Airi (3 Picks, 33% WR)", value: 3, winRate: 33.3, color: colorDSL },
-            { id: "Enzo", label: "3", title: "Enzo (3 Picks, 33% WR)", value: 3, winRate: 33.3, color: colorSUP },
-            { id: "Fennik", label: "3", title: "Fennik (3 Picks, 33% WR)", value: 3, winRate: 33.3, color: colorADL },
-            { id: "Liliana", label: "3", title: "Liliana (3 Picks, 67% WR)", value: 3, winRate: 66.7, color: colorMID },
-            { id: "Marja", label: "3", title: "Marja (3 Picks, 0% WR)", value: 3, winRate: 0.0, color: colorDSL },
-            { id: "Moren", label: "3", title: "Moren (3 Picks, 0% WR)", value: 3, winRate: 0.0, color: colorADL },
-            { id: "Murad", label: "3", title: "Murad (3 Picks, 0% WR)", value: 3, winRate: 0.0, color: colorMID },
+            { id: "Enzo", label: "3", title: "Enzo (3 Picks, 67% WR)", value: 3, winRate: 66.7, color: colorSUP },
+            { id: "Heino", label: "3", title: "Heino (3 Picks, 67% WR)", value: 3, winRate: 66.7, color: colorMID },
+            { id: "Iggy", label: "3", title: "Iggy (3 Picks, 33% WR)", value: 3, winRate: 33.3, color: colorMID },
+            { id: "Mganga", label: "3", title: "Mganga (3 Picks, 100% WR)", value: 3, winRate: 100.0, color: colorMID },
+            { id: "Murad", label: "3", title: "Murad (3 Picks, 100% WR)", value: 3, winRate: 100.0, color: colorDSL },
             { id: "Rouie", label: "3", title: "Rouie (3 Picks, 0% WR)", value: 3, winRate: 0.0, color: colorMID },
-            { id: "Ryoma", label: "3", title: "Ryoma (3 Picks, 33% WR)", value: 3, winRate: 33.3, color: colorDSL },
-            { id: "Taara", label: "3", title: "Taara (3 Picks, 0% WR)", value: 3, winRate: 0.0, color: colorDSL },
-            { id: "Annette", label: "2", title: "Annette (2 Picks, 0% WR)", value: 2, winRate: 0.0, color: colorMID },
-            { id: "Aya", label: "2", title: "Aya (2 Picks, 0% WR)", value: 2, winRate: 0.0, color: colorSUP },
-            { id: "Billow", label: "2", title: "Billow (2 Picks, 0% WR)", value: 2, winRate: 0.0, color: colorJUG },
-            { id: "Eland'orr", label: "2", title: "Eland'orr (2 Picks, 0% WR)", value: 2, winRate: 0.0, color: colorJUG },
-            { id: "Hayate", label: "2", title: "Hayate (2 Picks, 0% WR)", value: 2, winRate: 0.0, color: colorADL },
-            { id: "Iggy", label: "2", title: "Iggy (2 Picks, 0% WR)", value: 2, winRate: 0.0, color: colorMID },
-            { id: "Krizzix", label: "2", title: "Krizzix (2 Picks, 50% WR)", value: 2, winRate: 50.0, color: colorSUP },
+            { id: "Aya", label: "2", title: "Aya (2 Picks, 50% WR)", value: 2, winRate: 50.0, color: colorSUP },
+            { id: "Liliana", label: "2", title: "Liliana (2 Picks, 0% WR)", value: 2, winRate: 0.0, color: colorMID },
             { id: "Riktor", label: "2", title: "Riktor (2 Picks, 0% WR)", value: 2, winRate: 0.0, color: colorDSL },
-            { id: "Sinestrea", label: "2", title: "Sinestrea (2 Picks, 0% WR)", value: 2, winRate: 0.0, color: colorJUG },
-            { id: "TeeMee", label: "2", title: "TeeMee (2 Picks, 0% WR)", value: 2, winRate: 0.0, color: colorSUP },
-            { id: "Tel'Annas", label: "2", title: "Tel'Annas (2 Picks, 50% WR)", value: 2, winRate: 50.0, color: colorADL },
-            { id: "Volkath", label: "2", title: "Volkath (2 Picks, 0% WR)", value: 2, winRate: 0.0, color: colorJUG },
-            { id: "Yue", label: "2", title: "Yue (2 Picks, 0% WR)", value: 2, winRate: 0.0, color: colorMID },
-            { id: "Zephys", label: "2", title: "Zephys (2 Picks, 50% WR)", value: 2, winRate: 50.0, color: colorJUG }
+            { id: "Sinestrea", label: "2", title: "Sinestrea (2 Picks, 50% WR)", value: 2, winRate: 50.0, color: colorJUG },
+            { id: "Thane", label: "2", title: "Thane (2 Picks, 50% WR)", value: 2, winRate: 50.0, color: colorSUP },
+            { id: "Valhein", label: "2", title: "Valhein (2 Picks, 50% WR)", value: 2, winRate: 50.0, color: colorADL },
+            { id: "Wisp", label: "2", title: "Wisp (2 Picks, 0% WR)", value: 2, winRate: 0.0, color: colorADL },
+            { id: "Zephys", label: "2", title: "Zephys (2 Picks, 100% WR)", value: 2, winRate: 100.0, color: colorJUG }
         ];
 
         let processedNodes = rawNodes.map(node => {
@@ -289,103 +311,151 @@
             node.brokenImage = 'https://via.placeholder.com/150/1e293b/ffffff?text=' + node.id;
             return node;
         });
-        var nodes = new vis.DataSet(processedNodes);
-        const getHeroInfo = (id) => processedNodes.find(n => n.id === id);
-
-        // ฟังก์ชันกำหนดสี WR
-        const getWrBadge = (wr) => {
-            let cls = wr >= 50 ? 'wr-good' : 'wr-bad';
-            return `<div class="wr-badge ${cls}">${Math.round(wr)}% WR</div>`;
-        };
-
-        // ==========================================
-        // 1. สร้างตาราง: Top Picks (แสดงรูป + สถิติ Win Rate)
-        // ==========================================
-        const tableBody = document.getElementById('hero-table-body');
-        let sortedHeroes = [...processedNodes].sort((a, b) => b.value - a.value);
         
-        sortedHeroes.forEach((node) => {
-            let tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td>
-                    <img src="${node.image}" onerror="this.src='${node.brokenImage}'" class="hero-img-small" style="border: 2px solid ${node.color.background};" title="${node.id}">
-                </td>
-                <td class="stats-cell">
-                    <span class="picks-highlight">${node.value} Picks</span>
-                    ${getWrBadge(node.winRate)}
-                </td>
-            `;
-            tableBody.appendChild(tr);
-        });
+        var nodes = new vis.DataSet(processedNodes);
 
         // ==========================================
-        // 2. ข้อมูล Edges สำหรับกราฟ และ ตารางคอมโบ พร้อมสถิติ
+        // ข้อมูล Edges เบื้องต้น (ใส่ ID ให้แต่ละเส้น)
         // ==========================================
         let rawEdges = [
-            { from: "Dolia", to: "Valhein", label: "3", width: 3, color: {color: '#94a3b8'}, winRate: 0.0 },
+            { from: "Hayate", to: "Toro", label: "4", width: 4, color: {color: '#cbd5e1'}, winRate: 50.0 },
+            { from: "Keera", to: "Y'bneth", label: "4", width: 4, color: {color: '#cbd5e1'}, winRate: 25.0 },
+            { from: "Airi", to: "Dolia", label: "3", width: 3, color: {color: '#94a3b8'}, winRate: 66.7 },
+            { from: "Airi", to: "Fennik", label: "3", width: 3, color: {color: '#94a3b8'}, winRate: 100.0 },
             { from: "Dolia", to: "Zata", label: "3", width: 3, color: {color: '#94a3b8'}, winRate: 0.0 },
-            { from: "Keera", to: "Rouie", label: "3", width: 3, color: {color: '#94a3b8'}, winRate: 0.0 },
-            { from: "Lorion", to: "Wisp", label: "3", width: 3, color: {color: '#94a3b8'}, winRate: 0.0 },
-            { from: "Qi", to: "Wisp", label: "3", width: 3, color: {color: '#94a3b8'}, winRate: 0.0 },
-            { from: "Valhein", to: "Zata", label: "3", width: 3, color: {color: '#94a3b8'}, winRate: 0.0 },
-            { from: "Annette", to: "Moren", label: "2", width: 2, winRate: 0.0 },
-            { from: "Aya", to: "Murad", label: "2", width: 2, winRate: 0.0 },
-            { from: "Enzo", to: "Tachi", label: "2", width: 2, winRate: 50.0 },
-            { from: "Fennik", to: "Krizzix", label: "2", width: 2, winRate: 50.0 },
-            { from: "Fennik", to: "Taara", label: "2", width: 2, winRate: 0.0 },
-            { from: "Hayate", to: "Keera", label: "2", width: 2, winRate: 0.0 },
-            { from: "Hayate", to: "Rouie", label: "2", width: 2, winRate: 0.0 },
-            { from: "Iggy", to: "Toro", label: "2", width: 2, winRate: 0.0 },
-            { from: "Keera", to: "Toro", label: "2", width: 2, winRate: 0.0 },
-            { from: "Liliana", to: "Y'bneth", label: "2", width: 2, winRate: 50.0 },
-            { from: "Lorion", to: "TeeMee", label: "2", width: 2, winRate: 0.0 },
-            { from: "Marja", to: "Y'bneth", label: "2", width: 2, winRate: 0.0 },
-            { from: "Murad", to: "Volkath", label: "2", width: 2, winRate: 0.0 },
-            { from: "Qi", to: "Y'bneth", label: "2", width: 2, winRate: 0.0 },
-            { from: "Ryoma", to: "Tachi", label: "2", width: 2, winRate: 50.0 },
-            { from: "Tachi", to: "Valhein", label: "2", width: 2, winRate: 50.0 },
-            { from: "Tachi", to: "Wisp", label: "2", width: 2, winRate: 0.0 },
-            { from: "Tachi", to: "Zata", label: "2", width: 2, winRate: 50.0 },
-            { from: "Toro", to: "Wisp", label: "2", width: 2, winRate: 0.0 }
+            { from: "Hayate", to: "Marja", label: "3", width: 3, color: {color: '#94a3b8'}, winRate: 66.7 },
+            { from: "Hayate", to: "Yena", label: "3", width: 3, color: {color: '#94a3b8'}, winRate: 66.7 },
+            { from: "Lorion", to: "Yena", label: "3", width: 3, color: {color: '#94a3b8'}, winRate: 100.0 },
+            { from: "Stuart", to: "Yena", label: "3", width: 3, color: {color: '#94a3b8'}, winRate: 66.7 },
+            { from: "Airi", to: "Annette", label: "2", width: 2, winRate: 100.0 },
+            { from: "Airi", to: "Heino", label: "2", width: 2, winRate: 100.0 },
+            { from: "Airi", to: "Stuart", label: "2", width: 2, winRate: 100.0 },
+            { from: "Airi", to: "Zephys", label: "2", width: 2, winRate: 100.0 },
+            { from: "Annette", to: "Dolia", label: "2", width: 2, winRate: 100.0 },
+            { from: "Annette", to: "Toro", label: "2", width: 2, winRate: 100.0 },
+            { from: "Aya", to: "Toro", label: "2", width: 2, winRate: 50.0 },
+            { from: "Billow", to: "Hayate", label: "2", width: 2, winRate: 50.0 },
+            { from: "Billow", to: "TeeMee", label: "2", width: 2, winRate: 50.0 },
+            { from: "Capheny", to: "Keera", label: "2", width: 2, winRate: 50.0 },
+            { from: "Dolia", to: "Sinestrea", label: "2", width: 2, winRate: 50.0 },
+            { from: "Eland'orr", to: "Iggy", label: "2", width: 2, winRate: 50.0 },
+            { from: "Eland'orr", to: "Lorion", label: "2", width: 2, winRate: 50.0 },
+            { from: "Eland'orr", to: "Y'bneth", label: "2", width: 2, winRate: 50.0 },
+            { from: "Fennik", to: "Tachi", label: "2", width: 2, winRate: 50.0 },
+            { from: "Fennik", to: "TeeMee", label: "2", width: 2, winRate: 100.0 },
+            { from: "Hayate", to: "TeeMee", label: "2", width: 2, winRate: 100.0 },
+            { from: "Heino", to: "Keera", label: "2", width: 2, winRate: 50.0 },
+            { from: "Keera", to: "Stuart", label: "2", width: 2, winRate: 50.0 },
+            { from: "Keera", to: "Toro", label: "2", width: 2, winRate: 50.0 },
+            { from: "Keera", to: "Yena", label: "2", width: 2, winRate: 50.0 },
+            { from: "Lorion", to: "Stuart", label: "2", width: 2, winRate: 100.0 },
+            { from: "Lorion", to: "Y'bneth", label: "2", width: 2, winRate: 100.0 },
+            { from: "Marja", to: "Rouie", label: "2", width: 2, winRate: 0.0 },
+            { from: "Marja", to: "Tachi", label: "2", width: 2, winRate: 50.0 },
+            { from: "Marja", to: "TeeMee", label: "2", width: 2, winRate: 50.0 },
+            { from: "Marja", to: "Toro", label: "2", width: 2, winRate: 50.0 },
+            { from: "Marja", to: "Yena", label: "2", width: 2, winRate: 50.0 },
+            { from: "Murad", to: "Toro", label: "2", width: 2, winRate: 100.0 },
+            { from: "Stuart", to: "Y'bneth", label: "2", width: 2, winRate: 100.0 },
+            { from: "Tachi", to: "Thane", label: "2", width: 2, winRate: 50.0 },
+            { from: "TeeMee", to: "Yena", label: "2", width: 2, winRate: 100.0 },
+            { from: "Toro", to: "Yena", label: "2", width: 2, winRate: 0.0 },
+            { from: "Y'bneth", to: "Yena", label: "2", width: 2, winRate: 100.0 }
         ];
 
-        // อัปเดต Title (Tooltip) ของเส้นเชื่อมกราฟให้แสดง %WR
         rawEdges = rawEdges.map(e => {
+            e.id = e.from + "_" + e.to;
             e.title = `${e.from} + ${e.to} <br> (${e.label} Picks, ${Math.round(e.winRate)}% WR)`;
             return e;
         });
 
         var edges = new vis.DataSet(rawEdges);
 
-        // ==========================================
-        // 3. สร้างตาราง: Combinations (แสดงรูปคู่ + Win Rate)
-        // ==========================================
-        const comboTableBody = document.getElementById('combo-table-body');
-        let sortedEdges = [...rawEdges].sort((a, b) => parseInt(b.label) - parseInt(a.label));
-
-        sortedEdges.forEach((edge) => {
-            let hero1 = getHeroInfo(edge.from);
-            let hero2 = getHeroInfo(edge.to);
-
-            let tr = document.createElement('tr');
-            tr.innerHTML = `
-                <td>
-                    <div class="combo-cell">
-                        <img src="${hero1.image}" onerror="this.src='${hero1.brokenImage}'" class="hero-img-small" style="border: 2px solid ${hero1.color.background};" title="${hero1.id}">
-                        <span class="plus-icon">+</span>
-                        <img src="${hero2.image}" onerror="this.src='${hero2.brokenImage}'" class="hero-img-small" style="border: 2px solid ${hero2.color.background};" title="${hero2.id}">
-                    </div>
-                </td>
-                <td class="stats-cell">
-                    <span class="picks-highlight">${edge.label} Times</span>
-                    ${getWrBadge(edge.winRate)}
-                </td>
-            `;
-            comboTableBody.appendChild(tr);
-        });
+        const getWrBadge = (wr) => {
+            let cls = wr >= 50 ? 'wr-good' : 'wr-bad';
+            return `<div class="wr-badge ${cls}">${Math.round(wr)}% WR</div>`;
+        };
 
         // ==========================================
-        // 4. สร้างและตั้งค่ากราฟ
+        // ฟังก์ชัน เรนเดอร์ตารางแบบ Dynamic
+        // ==========================================
+        function renderTables() {
+            // 1. ตาราง Hero
+            const tableBody = document.getElementById('hero-table-body');
+            tableBody.innerHTML = ''; 
+            let currentNodes = nodes.get();
+            let sortedHeroes = currentNodes.sort((a, b) => b.value - a.value);
+            
+            sortedHeroes.forEach((node) => {
+                let tr = document.createElement('tr');
+                // จัดการเรื่อง Single Quote ให้ปลอดภัย (Escape Characters)
+                let safeId = node.id.replace(/'/g, "\\'");
+                
+                tr.innerHTML = `
+                    <td>
+                        <div class="hero-cell">
+                            <img src="${node.image}" onerror="this.src='${node.brokenImage}'" class="hero-img-small" style="border: 2px solid ${node.color.background};" title="${node.id}">
+                            <span style="font-weight: 600; font-size: 0.95rem;">${node.id}</span>
+                        </div>
+                    </td>
+                    <td class="stats-cell">
+                        <span class="picks-highlight">${node.value} Picks</span>
+                        ${getWrBadge(node.winRate)}
+                    </td>
+                    <td>
+                        <button class="btn-delete" onclick="removeHero('${safeId}')" title="ลบ ${node.id} ออกจากระบบ">✖</button>
+                    </td>
+                `;
+                tableBody.appendChild(tr);
+            });
+
+            // 2. ตาราง Combinations
+            const comboTableBody = document.getElementById('combo-table-body');
+            comboTableBody.innerHTML = ''; 
+            let currentEdges = edges.get();
+            let sortedEdges = currentEdges.sort((a, b) => parseInt(b.label) - parseInt(a.label));
+
+            sortedEdges.forEach((edge) => {
+                let hero1 = nodes.get(edge.from);
+                let hero2 = nodes.get(edge.to);
+
+                if (!hero1 || !hero2) return;
+
+                let tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>
+                        <div class="combo-cell">
+                            <img src="${hero1.image}" onerror="this.src='${hero1.brokenImage}'" class="hero-img-small" style="border: 2px solid ${hero1.color.background};" title="${hero1.id}">
+                            <span class="plus-icon">+</span>
+                            <img src="${hero2.image}" onerror="this.src='${hero2.brokenImage}'" class="hero-img-small" style="border: 2px solid ${hero2.color.background};" title="${hero2.id}">
+                        </div>
+                    </td>
+                    <td class="stats-cell">
+                        <span class="picks-highlight">${edge.label} Times</span>
+                        ${getWrBadge(edge.winRate)}
+                    </td>
+                `;
+                comboTableBody.appendChild(tr);
+            });
+        }
+
+        // ==========================================
+        // ระบบลบฮีโร่แบบ Interactive (อัปเดตแก้บัค Single Quote)
+        // ==========================================
+        window.removeHero = function(heroId) {
+            nodes.remove(heroId);
+
+            let edgesToRemove = edges.get().filter(e => e.from === heroId || e.to === heroId);
+            let edgeIdsToRemove = edgesToRemove.map(e => e.id);
+            edges.remove(edgeIdsToRemove);
+
+            renderTables();
+        };
+
+        renderTables();
+
+        // ==========================================
+        // สร้างและตั้งค่ากราฟ
         // ==========================================
         var container = document.getElementById('mynetwork');
         var data = { nodes: nodes, edges: edges };
