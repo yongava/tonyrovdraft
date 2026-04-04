@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SGP - ไหวชิลเว้ย</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', Tahoma, sans-serif;
+            background-color: #0f172a; 
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden; 
+            padding-bottom: 60px; 
+        }
+        
+        h1 {
+            margin-top: 20px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(to right, #60a5fa, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            background: rgba(30, 41, 59, 0.7);
+            padding: 8px 25px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            font-weight: 600;
+        }
+        .color-box {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            margin-right: 8px;
+            display: inline-block;
+        }
+
+        #mynetwork {
+            width: 95%;
+            max-width: 1500px;
+            height: 400px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            box-sizing: border-box;
+            margin-bottom: 30px; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .tables-wrapper {
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+            width: 95%;
+            max-width: 1200px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .table-section {
+            flex: 1;
+            background-color: #1e293b;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #e2e8f0;
+            background-color: #0f172a;
+            padding: 15px 0;
+            margin: 0;
+            text-align: center;
+            border-bottom: 2px solid rgba(255,255,255,0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        th, td {
+            padding: 12px 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            vertical-align: middle;
+        }
+        th {
+            color: #94a3b8;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            background-color: #0f172a;
+        }
+        tr:hover {
+            background-color: rgba(255,255,255,0.03);
+        }
+        tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .hero-cell {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 15px;
+            padding-left: 15px;
+        }
+        .hero-img-small {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+        .hero-img-small:hover {
+            transform: scale(1.1);
+        }
+        
+        .combo-cell {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .stats-cell {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .picks-highlight {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #facc15; 
+        }
+        .wr-badge {
+            font-size: 0.75rem;
+            font-weight: 800;
+            margin-top: 2px;
+            padding: 2px 8px;
+            border-radius: 12px;
+            letter-spacing: 0.5px;
+        }
+        .wr-good {
+            background-color: rgba(16, 185, 129, 0.2);
+            color: #34d399; 
+            border: 1px solid rgba(52, 211, 153, 0.3);
+        }
+        .wr-bad {
+            background-color: rgba(239, 68, 68, 0.2);
+            color: #f87171; 
+            border: 1px solid rgba(248, 113, 113, 0.3);
+        }
+        .plus-icon {
+            color: #64748b;
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        .btn-delete {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 6px;
+            padding: 6px 10px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .btn-delete:hover {
+            background-color: #ef4444;
+            color: #ffffff;
+            box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+        }
+
+        div.vis-tooltip {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 14px;
+            background-color: rgba(15, 23, 42, 0.95) !important;
+            color: #fff !important;
+            border: 1px solid #60a5fa !important;
+            border-radius: 8px !important;
+            padding: 10px 14px !important;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.8) !important;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>SGP : SYNERGY MAP</h1>
+    
+    <div class="legend">
+        <div class="legend-item"><span class="color-box" style="background: #3b82f6;"></span> DSL</div>
+        <div class="legend-item"><span class="color-box" style="background: #8b5cf6;"></span> JUG</div>
+        <div class="legend-item"><span class="color-box" style="background: #f59e0b;"></span> MID</div>
+        <div class="legend-item"><span class="color-box" style="background: #ef4444;"></span> ADL</div>
+        <div class="legend-item"><span class="color-box" style="background: #10b981;"></span> SUP</div>
+    </div>
+
+    <!-- <div id="mynetwork"></div> -->
+
+    <div class="tables-wrapper">
+        <div class="table-section">
+            <div class="section-title">🏆 Top Picks & Win Rate</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 45%; text-align: left; padding-left: 30px;">Hero</th>
+                        <th style="width: 35%;">Stats</th>
+                        <th style="width: 20%;">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="hero-table-body">
+                    </tbody>
+            </table>
+        </div>
+
+        <div class="table-section">
+            <div class="section-title">🤝 Top Combinations</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 60%;">Combo</th>
+                        <th style="width: 40%;">Stats</th>
+                    </tr>
+                </thead>
+                <tbody id="combo-table-body">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        const colorDSL = { role: 'DSL', background: '#3b82f6', border: '#60a5fa', highlight: {border: '#93c5fd', background: '#2563eb'}};
+        const colorJUG = { role: 'JUG', background: '#8b5cf6', border: '#a78bfa', highlight: {border: '#c4b5fd', background: '#7c3aed'}};
+        const colorMID = { role: 'MID', background: '#f59e0b', border: '#fbbf24', highlight: {border: '#fde68a', background: '#d97706'}};
+        const colorADL = { role: 'ADL', background: '#ef4444', border: '#f87171', highlight: {border: '#fca5a5', background: '#dc2626'}};
+        const colorSUP = { role: 'SUP', background: '#10b981', border: '#34d399', highlight: {border: '#6ee7b7', background: '#059669'}};
+
+        // ข้อมูลดิบของฮีโร่ SGP
+        let rawNodes = [
+            { id: "TeeMee", label: "9", title: "TeeMee (9 Picks, 78% WR)", value: 9, winRate: 77.8, color: colorSUP },
+            { id: "Lorion", label: "8", title: "Lorion (8 Picks, 50% WR)", value: 8, winRate: 50.0, color: colorMID },
+            { id: "Fennik", label: "7", title: "Fennik (7 Picks, 57% WR)", value: 7, winRate: 57.1, color: colorADL },
+            { id: "Marja", label: "7", title: "Marja (7 Picks, 57% WR)", value: 7, winRate: 57.1, color: colorDSL },
+            { id: "Toro", label: "7", title: "Toro (7 Picks, 71% WR)", value: 7, winRate: 71.4, color: colorSUP },
+            { id: "Wisp", label: "7", title: "Wisp (7 Picks, 57% WR)", value: 7, winRate: 57.1, color: colorADL },
+            { id: "Capheny", label: "6", title: "Capheny (6 Picks, 50% WR)", value: 6, winRate: 50.0, color: colorADL },
+            { id: "Qi", label: "6", title: "Qi (6 Picks, 50% WR)", value: 6, winRate: 50.0, color: colorDSL },
+            { id: "Rouie", label: "6", title: "Rouie (6 Picks, 50% WR)", value: 6, winRate: 50.0, color: colorMID },
+            { id: "Y'bneth", label: "6", title: "Y'bneth (6 Picks, 33% WR)", value: 6, winRate: 33.3, color: colorSUP },
+            { id: "Billow", label: "5", title: "Billow (5 Picks, 80% WR)", value: 5, winRate: 80.0, color: colorJUG },
+            { id: "Mganga", label: "5", title: "Mganga (5 Picks, 80% WR)", value: 5, winRate: 80.0, color: colorMID },
+            { id: "Ryoma", label: "5", title: "Ryoma (5 Picks, 80% WR)", value: 5, winRate: 80.0, color: colorDSL },
+            { id: "Skud", label: "5", title: "Skud (5 Picks, 60% WR)", value: 5, winRate: 60.0, color: colorDSL },
+            { id: "Volkath", label: "5", title: "Volkath (5 Picks, 40% WR)", value: 5, winRate: 40.0, color: colorJUG },
+            { id: "Zephys", label: "5", title: "Zephys (5 Picks, 60% WR)", value: 5, winRate: 60.0, color: colorJUG },
+            { id: "Dolia", label: "4", title: "Dolia (4 Picks, 75% WR)", value: 4, winRate: 75.0, color: colorSUP },
+            { id: "Eland'orr", label: "4", title: "Eland'orr (4 Picks, 75% WR)", value: 4, winRate: 75.0, color: colorJUG },
+            { id: "Hayate", label: "4", title: "Hayate (4 Picks, 100% WR)", value: 4, winRate: 100.0, color: colorADL },
+            { id: "Liliana", label: "4", title: "Liliana (4 Picks, 100% WR)", value: 4, winRate: 100.0, color: colorMID },
+            { id: "Moren", label: "4", title: "Moren (4 Picks, 75% WR)", value: 4, winRate: 75.0, color: colorADL },
+            { id: "Tachi", label: "4", title: "Tachi (4 Picks, 75% WR)", value: 4, winRate: 75.0, color: colorJUG },
+            { id: "Aya", label: "3", title: "Aya (3 Picks, 100% WR)", value: 3, winRate: 100.0, color: colorMID },
+            { id: "Biron", label: "3", title: "Biron (3 Picks, 67% WR)", value: 3, winRate: 66.7, color: colorDSL },
+            { id: "Keera", label: "3", title: "Keera (3 Picks, 67% WR)", value: 3, winRate: 66.7, color: colorJUG },
+            { id: "Kriknak", label: "3", title: "Kriknak (3 Picks, 33% WR)", value: 3, winRate: 33.3, color: colorJUG },
+            { id: "Valhein", label: "3", title: "Valhein (3 Picks, 67% WR)", value: 3, winRate: 66.7, color: colorADL },
+            { id: "Yena", label: "3", title: "Yena (3 Picks, 100% WR)", value: 3, winRate: 100.0, color: colorDSL },
+            { id: "Airi", label: "2", title: "Airi (2 Picks, 50% WR)", value: 2, winRate: 50.0, color: colorDSL },
+            { id: "Errol", label: "2", title: "Errol (2 Picks, 50% WR)", value: 2, winRate: 50.0, color: colorJUG },
+            { id: "Iggy", label: "2", title: "Iggy (2 Picks, 0% WR)", value: 2, winRate: 0.0, color: colorMID },
+            { id: "Krizzix", label: "2", title: "Krizzix (2 Picks, 50% WR)", value: 2, winRate: 50.0, color: colorSUP },
+            { id: "Murad", label: "2", title: "Murad (2 Picks, 50% WR)", value: 2, winRate: 50.0, color: colorJUG },
+            { id: "Taara", label: "2", title: "Taara (2 Picks, 100% WR)", value: 2, winRate: 100.0, color: colorDSL },
+            { id: "Thane", label: "2", title: "Thane (2 Picks, 0% WR)", value: 2, winRate: 0.0, color: colorSUP },
+            { id: "Violet", label: "2", title: "Violet (2 Picks, 100% WR)", value: 2, winRate: 100.0, color: colorADL },
+            { id: "Yue", label: "2", title: "Yue (2 Picks, 50% WR)", value: 2, winRate: 50.0, color: colorMID },
+            { id: "Zata", label: "2", title: "Zata (2 Picks, 50% WR)", value: 2, winRate: 50.0, color: colorMID }
+        ];
+
+        let processedNodes = rawNodes.map(node => {
+            let imgName = node.id.toLowerCase().replace(/['\s]/g, '') + '.jpg';
+            node.image = 'heroes/' + imgName;
+            node.brokenImage = 'https://via.placeholder.com/150/1e293b/ffffff?text=' + node.id;
+            return node;
+        });
+        
+        var nodes = new vis.DataSet(processedNodes);
+
+        // ข้อมูล Edges ของ SGP
+        let rawEdges = [
+            { from: "TeeMee", to: "Wisp", label: "6", width: 4, color: {color: '#cbd5e1'}, winRate: 66.7 },
+            { from: "Lorion", to: "Y'bneth", label: "4", width: 4, color: {color: '#cbd5e1'}, winRate: 50.0 },
+            { from: "Billow", to: "TeeMee", label: "3", width: 3, color: {color: '#94a3b8'}, winRate: 66.7 },
+            { from: "Fennik", to: "Toro", label: "3", width: 3, color: {color: '#94a3b8'}, winRate: 100.0 },
+            { from: "Lorion", to: "Marja", label: "3", width: 3, color: {color: '#94a3b8'}, winRate: 66.7 },
+            { from: "Lorion", to: "Ryoma", label: "3", width: 3, color: {color: '#94a3b8'}, winRate: 66.7 },
+            { from: "Marja", to: "Moren", label: "3", width: 3, color: {color: '#94a3b8'}, winRate: 66.7 },
+            { from: "Mganga", to: "Tachi", label: "3", width: 3, color: {color: '#94a3b8'}, winRate: 66.7 },
+            { from: "Qi", to: "Toro", label: "3", width: 3, color: {color: '#94a3b8'}, winRate: 66.7 },
+            { from: "Rouie", to: "Volkath", label: "3", width: 3, color: {color: '#94a3b8'}, winRate: 33.3 },
+            { from: "Ryoma", to: "TeeMee", label: "3", width: 3, color: {color: '#94a3b8'}, winRate: 100.0 },
+            { from: "Aya", to: "Toro", label: "2", width: 2, winRate: 100.0 },
+            { from: "Billow", to: "Wisp", label: "2", width: 2, winRate: 50.0 },
+            { from: "Biron", to: "Rouie", label: "2", width: 2, winRate: 50.0 },
+            { from: "Biron", to: "TeeMee", label: "2", width: 2, winRate: 50.0 },
+            { from: "Biron", to: "Wisp", label: "2", width: 2, winRate: 50.0 },
+            { from: "Biron", to: "Zephys", label: "2", width: 2, winRate: 100.0 },
+            { from: "Capheny", to: "Rouie", label: "2", width: 2, winRate: 50.0 },
+            { from: "Capheny", to: "Skud", label: "2", width: 2, winRate: 50.0 },
+            { from: "Capheny", to: "Volkath", label: "2", width: 2, winRate: 0.0 },
+            { from: "Dolia", to: "Fennik", label: "2", width: 2, winRate: 50.0 },
+            { from: "Dolia", to: "Mganga", label: "2", width: 2, winRate: 100.0 },
+            { from: "Dolia", to: "Tachi", label: "2", width: 2, winRate: 100.0 },
+            { from: "Dolia", to: "Zephys", label: "2", width: 2, winRate: 50.0 },
+            { from: "Eland'orr", to: "Fennik", label: "2", width: 2, winRate: 50.0 },
+            { from: "Eland'orr", to: "Taara", label: "2", width: 2, winRate: 100.0 },
+            { from: "Eland'orr", to: "TeeMee", label: "2", width: 2, winRate: 100.0 },
+            { from: "Fennik", to: "Keera", label: "2", width: 2, winRate: 50.0 },
+            { from: "Fennik", to: "Qi", label: "2", width: 2, winRate: 50.0 },
+            { from: "Fennik", to: "Y'bneth", label: "2", width: 2, winRate: 0.0 },
+            { from: "Fennik", to: "Yue", label: "2", width: 2, winRate: 50.0 },
+            { from: "Hayate", to: "Qi", label: "2", width: 2, winRate: 100.0 },
+            { from: "Hayate", to: "Rouie", label: "2", width: 2, winRate: 100.0 },
+            { from: "Keera", to: "Lorion", label: "2", width: 2, winRate: 50.0 },
+            { from: "Keera", to: "Y'bneth", label: "2", width: 2, winRate: 50.0 },
+            { from: "Kriknak", to: "Lorion", label: "2", width: 2, winRate: 50.0 },
+            { from: "Kriknak", to: "Qi", label: "2", width: 2, winRate: 0.0 },
+            { from: "Kriknak", to: "Valhein", label: "2", width: 2, winRate: 50.0 },
+            { from: "Krizzix", to: "Lorion", label: "2", width: 2, winRate: 50.0 },
+            { from: "Lorion", to: "Moren", label: "2", width: 2, winRate: 50.0 },
+            { from: "Lorion", to: "Skud", label: "2", width: 2, winRate: 50.0 },
+            { from: "Lorion", to: "Valhein", label: "2", width: 2, winRate: 100.0 },
+            { from: "Lorion", to: "Wisp", label: "2", width: 2, winRate: 50.0 },
+            { from: "Marja", to: "Rouie", label: "2", width: 2, winRate: 50.0 },
+            { from: "Marja", to: "Y'bneth", label: "2", width: 2, winRate: 50.0 },
+            { from: "Marja", to: "Zephys", label: "2", width: 2, winRate: 50.0 },
+            { from: "Mganga", to: "Toro", label: "2", width: 2, winRate: 50.0 },
+            { from: "Moren", to: "Y'bneth", label: "2", width: 2, winRate: 50.0 },
+            { from: "Moren", to: "Zephys", label: "2", width: 2, winRate: 50.0 },
+            { from: "Murad", to: "Toro", label: "2", width: 2, winRate: 50.0 },
+            { from: "Qi", to: "Yue", label: "2", width: 2, winRate: 50.0 },
+            { from: "Rouie", to: "Skud", label: "2", width: 2, winRate: 50.0 },
+            { from: "Rouie", to: "TeeMee", label: "2", width: 2, winRate: 0.0 },
+            { from: "Rouie", to: "Wisp", label: "2", width: 2, winRate: 0.0 },
+            { from: "Ryoma", to: "Skud", label: "2", width: 2, winRate: 100.0 },
+            { from: "Ryoma", to: "Wisp", label: "2", width: 2, winRate: 100.0 },
+            { from: "Skud", to: "TeeMee", label: "2", width: 2, winRate: 100.0 },
+            { from: "Skud", to: "Wisp", label: "2", width: 2, winRate: 100.0 },
+            { from: "Skud", to: "Y'bneth", label: "2", width: 2, winRate: 0.0 }
+        ];
+
+        rawEdges = rawEdges.map(e => {
+            e.id = e.from + "_" + e.to;
+            e.title = `${e.from} + ${e.to} <br> (${e.label} Picks, ${Math.round(e.winRate)}% WR)`;
+            return e;
+        });
+
+        var edges = new vis.DataSet(rawEdges);
+
+        const getWrBadge = (wr) => {
+            let cls = wr >= 50 ? 'wr-good' : 'wr-bad';
+            return `<div class="wr-badge ${cls}">${Math.round(wr)}% WR</div>`;
+        };
+
+        // ฟังก์ชัน เรนเดอร์ตารางแบบ Dynamic
+        function renderTables() {
+            // 1. ตาราง Hero
+            const tableBody = document.getElementById('hero-table-body');
+            tableBody.innerHTML = ''; 
+            let currentNodes = nodes.get();
+            let sortedHeroes = currentNodes.sort((a, b) => b.value - a.value);
+            
+            sortedHeroes.forEach((node) => {
+                let tr = document.createElement('tr');
+                let safeId = node.id.replace(/'/g, "\\'");
+                
+                tr.innerHTML = `
+                    <td>
+                        <div class="hero-cell">
+                            <img src="${node.image}" onerror="this.src='${node.brokenImage}'" class="hero-img-small" style="border: 2px solid ${node.color.background};" title="${node.id}">
+                            <span style="font-weight: 600; font-size: 0.95rem;">${node.id}</span>
+                        </div>
+                    </td>
+                    <td class="stats-cell">
+                        <span class="picks-highlight">${node.value} Picks</span>
+                        ${getWrBadge(node.winRate)}
+                    </td>
+                    <td>
+                        <button class="btn-delete" onclick="removeHero('${safeId}')" title="ลบ ${node.id} ออกจากระบบ">✖</button>
+                    </td>
+                `;
+                tableBody.appendChild(tr);
+            });
+
+            // 2. ตาราง Combinations
+            const comboTableBody = document.getElementById('combo-table-body');
+            comboTableBody.innerHTML = ''; 
+            let currentEdges = edges.get();
+            let sortedEdges = currentEdges.sort((a, b) => parseInt(b.label) - parseInt(a.label));
+
+            sortedEdges.forEach((edge) => {
+                let hero1 = nodes.get(edge.from);
+                let hero2 = nodes.get(edge.to);
+
+                if (!hero1 || !hero2) return;
+
+                let tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>
+                        <div class="combo-cell">
+                            <img src="${hero1.image}" onerror="this.src='${hero1.brokenImage}'" class="hero-img-small" style="border: 2px solid ${hero1.color.background};" title="${hero1.id}">
+                            <span class="plus-icon">+</span>
+                            <img src="${hero2.image}" onerror="this.src='${hero2.brokenImage}'" class="hero-img-small" style="border: 2px solid ${hero2.color.background};" title="${hero2.id}">
+                        </div>
+                    </td>
+                    <td class="stats-cell">
+                        <span class="picks-highlight">${edge.label} Times</span>
+                        ${getWrBadge(edge.winRate)}
+                    </td>
+                `;
+                comboTableBody.appendChild(tr);
+            });
+        }
+
+        // ระบบลบฮีโร่แบบ Interactive
+        window.removeHero = function(heroId) {
+            nodes.remove(heroId);
+
+            let edgesToRemove = edges.get().filter(e => e.from === heroId || e.to === heroId);
+            let edgeIdsToRemove = edgesToRemove.map(e => e.id);
+            edges.remove(edgeIdsToRemove);
+
+            renderTables();
+        };
+
+        renderTables();
+
+        // สร้างและตั้งค่ากราฟ
+        var container = document.getElementById('mynetwork');
+        var data = { nodes: nodes, edges: edges };
+
+        var options = {
+            nodes: {
+                shape: 'circularImage',
+                borderWidth: 2,
+                borderWidthSelected: 4,
+                font: { 
+                    color: '#ffffff', 
+                    size: 14,
+                    face: 'Poppins', 
+                    bold: true,
+                    background: 'rgba(15, 23, 42, 0.8)'
+                },
+                scaling: { 
+                    min: 15, max: 28, 
+                    label: { enabled: true, min: 12, max: 16 }
+                },
+                shadow: { enabled: true, color: 'rgba(0,0,0,0.8)', size: 8, x: 2, y: 2 }
+            },
+            edges: {
+                font: { 
+                    color: '#fde047', 
+                    size: 16, 
+                    align: 'middle', 
+                    strokeWidth: 3, 
+                    strokeColor: '#0f172a',
+                    face: 'Poppins',
+                    bold: true
+                },
+                color: { color: '#475569', highlight: '#facc15', hover: '#cbd5e1' },
+                smooth: { type: 'continuous' }
+            },
+            physics: {
+                solver: 'barnesHut',
+                barnesHut: {
+                    gravitationalConstant: -3000, 
+                    centralGravity: 0.1,        
+                    springLength: 200,          
+                    springConstant: 0.04,
+                    damping: 0.09
+                },
+                maxVelocity: 50,
+                timestep: 0.35,
+                stabilization: { iterations: 150 }
+            },
+            interaction: { hover: true, tooltipDelay: 200, zoomView: true }
+        };
+
+        var network = new vis.Network(container, data, options);
+        network.once("stabilizationIterationsDone", function() {
+            network.fit({ animation: { duration: 1000, easingFunction: "easeInOutQuad" } });
+        });
+    </script>
+</body>
+</html>
